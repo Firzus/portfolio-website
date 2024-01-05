@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { motion } from 'framer-motion'
 import emailjs from '@emailjs/browser'
@@ -8,13 +8,8 @@ import { EarthCanvas } from '@components/canvas'
 import { slideIn } from '@utils/motion'
 import { SectionWrapper } from '@hoc'
 
-// template_m6sc2st
-
-// service_aszrtuh
-
-// upzJSm9dTtK-WjiAV
-
 const Contact = () => {
+  const formRef = useRef();
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -24,11 +19,43 @@ const Contact = () => {
   const [loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
 
+    setForm({ ...form, [name]: value })
   }
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true)
 
+    emailjs.send(
+      process.env.NEXT_PUBLIC_SERVICE_ID,
+      process.env.NEXT_PUBLIC_TEMPLATE_ID,
+      {
+        from_name: form.name,
+        to_name: 'Lilian',
+        from_email: form.email,
+        to_email: 'contact.lprieu@gmail.com',
+        message: form.message
+      },
+      process.env.NEXT_PUBLIC_EMAILJS_API_KEY
+    )
+      .then(() => {
+        setLoading(false)
+        alert('Thank you. I will get back to you as soon as possible.')
+
+        setForm({
+          name: '',
+          email: '',
+          message: '',
+        })
+      }, (error) => {
+        setLoading(false)
+
+        console.log(error)
+
+        alert('Something went wrong.')
+      })
   }
 
   return (
@@ -41,7 +68,7 @@ const Contact = () => {
         <h3 className='sectionHeadText'>Contact.</h3>
 
         <form
-          // ref={formRef}
+          ref={formRef}
           onSubmit={handleSubmit}
           className='mt-12 flex flex-col gap-8'
         >
