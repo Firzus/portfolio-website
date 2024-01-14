@@ -1,6 +1,6 @@
 "use client";
 
-// Base
+// Core
 import Image from "next/image";
 
 // Lib
