@@ -11,7 +11,7 @@ export default function Main() {
       <Experience />
       <Tech />
       <Works />
-      <Feedbacks />
+      {/* <Feedbacks /> */}
       <section className="relative z-0">
         <Contact />
         <StarsCanvas />

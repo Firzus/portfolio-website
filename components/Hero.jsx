@@ -20,7 +20,7 @@ export default function Hero() {
             Hi, I'm <span className='text-[#915eff]'>Lilian</span>
           </h1>
           <p className="heroSubText mt-2 text-white-100">
-            I develop 3D visuals, user <br className='sm:block hidden' /> interfaces and web applications.
+            I develop video games, websites,<br className='sm:block hidden' /> and I also do interface design.
           </p>
         </div>
       </div>

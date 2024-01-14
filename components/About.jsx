@@ -1,7 +1,9 @@
 'use client'
 
+// Core
 import Image from 'next/image'
 
+// Module
 import { Tilt } from 'react-tilt'
 import { motion } from 'framer-motion'
 import { fadeIn, textVariant } from '@utils/motion'
@@ -51,7 +53,7 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit similique suscipit provident reiciendis laborum exercitationem error, quo excepturi, aliquam sint necessitatibus quidem quos, animi iure est quae. Ea, magnam? Est laudantium error vitae quidem architecto vero nemo porro autem quas. Aliquid sapiente, quas porro cumque neque aperiam corrupti ducimus consequatur.
+        I am a French student with a specialization in video game and web development. My diverse projects have provided me with extensive experience across various domains, utilizing tools like Unity, Unreal Engine, React, and Figma. Known for my meticulous approach and strong leadership skills in team settings, I am eager to contribute my expertise to enhance your project.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>

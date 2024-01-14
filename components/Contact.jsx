@@ -1,11 +1,15 @@
 'use client'
 
+// React
 import { useRef, useState } from 'react'
 
-import { motion } from 'framer-motion'
+// Module
 import emailjs from '@emailjs/browser'
-import { EarthCanvas } from '@components/canvas'
+import { motion } from 'framer-motion'
 import { slideIn } from '@utils/motion'
+
+// Content
+import { EarthCanvas } from '@components/canvas'
 import { SectionWrapper } from '@hoc'
 
 const Contact = () => {
