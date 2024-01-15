@@ -1,14 +1,25 @@
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas, Education } from "@components"
+import {
+  About,
+  Contact,
+  Experience,
+  Feedbacks,
+  Hero,
+  Navbar,
+  Tech,
+  Works,
+  StarsCanvas,
+  Education,
+} from "@components";
 
 export default function Main() {
   return (
     <main className="realtive z-0 bg-primary">
-      <section className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
+      <section>
         <Navbar />
         <Hero />
       </section>
       <About />
-      <Education/>
+      <Education />
       <Experience />
       <Tech />
       <Works />
@@ -18,5 +29,5 @@ export default function Main() {
         <StarsCanvas />
       </section>
     </main>
-  )
+  );
 }

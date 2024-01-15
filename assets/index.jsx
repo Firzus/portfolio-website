@@ -6,9 +6,9 @@ import close from "./close.svg";
 import blank from "./blank.png";
 
 // Domains
-import web from "./web.png";
-import design from "./design.png";
-import game from "./game.png";
+import web from "/assets/web.png";
+import design from "/assets/design.png";
+import game from "/assets/game.png";
 
 // Balls
 import css from "./tech/css.png";
