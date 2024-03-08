@@ -6,20 +6,10 @@ import {
   blank,
 
   // Balls
-  javascript,
-  html,
-  css,
   reactjs,
   tailwind,
-  nodejs,
-  git,
-  figma,
-  threejs,
   cpp,
   csharp,
-  framer,
-  mui,
-  nextjs,
   unity,
   unreal_engine,
 
@@ -73,40 +63,12 @@ const services = [
 
 const technologies = [
   {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "React JS",
+    name: "React",
     icon: reactjs,
   },
   {
-    name: "Tailwind CSS",
+    name: "Tailwind",
     icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "Git",
-    icon: git,
-  },
-  {
-    name: "Figma",
-    icon: figma,
   },
   {
     name: "C++",
@@ -117,23 +79,11 @@ const technologies = [
     icon: csharp,
   },
   {
-    name: "Framer",
-    icon: framer,
-  },
-  {
-    name: "MUI",
-    icon: mui,
-  },
-  {
     name: "Unity",
     icon: unity,
   },
   {
-    name: "Next JS",
-    icon: nextjs,
-  },
-  {
-    name: "Unreal Engine 5",
+    name: "Unreal Engine",
     icon: unreal_engine,
   },
 ];
