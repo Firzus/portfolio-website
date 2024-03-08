@@ -1,265 +1,227 @@
 import {
-    mobile,
-    backend,
-    creator,
-    web,
-    javascript,
-    typescript,
-    html,
-    css,
-    reactjs,
-    redux,
-    tailwind,
-    nodejs,
-    mongodb,
-    git,
-    figma,
-    docker,
-    meta,
-    starbucks,
-    tesla,
-    shopify,
-    carrent,
-    jobit,
-    tripguide,
-    threejs,
+  // Core
+  web,
+  design,
+  game,
+  blank,
+
+  // Balls
+  reactjs,
+  tailwind,
+  cpp,
+  csharp,
+  unity,
+  unreal_engine,
+
+  // Education
+  gtech,
+  bia,
+
+  // Company
+  doxio,
+  nuit_detente,
+
+  // Showcases
+  wakfu_guide,
+  ia,
+  engine,
 } from "../assets";
 
 export const navLinks = [
-    {
-        id: "about",
-        title: "About",
-    },
-    {
-        id: "work",
-        title: "Work",
-    },
-    {
-        id: "contact",
-        title: "Contact",
-    },
+  {
+    id: "about",
+    title: "About",
+  },
+  {
+    id: "education",
+    title: "Education",
+  },
+  {
+    id: "work",
+    title: "Work",
+  },
+  {
+    id: "contact",
+    title: "Contact",
+  },
 ];
 
 const services = [
-    {
-        title: "Web Developer",
-        icon: web,
-    },
-    {
-        title: "React Native Developer",
-        icon: mobile,
-    },
-    {
-        title: "Backend Developer",
-        icon: backend,
-    },
-    {
-        title: "Content Creator",
-        icon: creator,
-    },
+  {
+    title: "Game Maker",
+    icon: game,
+  },
+  {
+    title: "Frontend",
+    icon: web,
+  },
+  {
+    title: "Web Design",
+    icon: design,
+  },
 ];
 
 const technologies = [
-    {
-        name: "HTML 5",
-        icon: html,
-    },
-    {
-        name: "CSS 3",
-        icon: css,
-    },
-    {
-        name: "JavaScript",
-        icon: javascript,
-    },
-    {
-        name: "TypeScript",
-        icon: typescript,
-    },
-    {
-        name: "React JS",
-        icon: reactjs,
-    },
-    {
-        name: "Redux Toolkit",
-        icon: redux,
-    },
-    {
-        name: "Tailwind CSS",
-        icon: tailwind,
-    },
-    {
-        name: "Node JS",
-        icon: nodejs,
-    },
-    {
-        name: "MongoDB",
-        icon: mongodb,
-    },
-    {
-        name: "Three JS",
-        icon: threejs,
-    },
-    {
-        name: "git",
-        icon: git,
-    },
-    {
-        name: "figma",
-        icon: figma,
-    },
-    {
-        name: "docker",
-        icon: docker,
-    },
+  {
+    name: "React",
+    icon: reactjs,
+  },
+  {
+    name: "Tailwind",
+    icon: tailwind,
+  },
+  {
+    name: "C++",
+    icon: cpp,
+  },
+  {
+    name: "C#",
+    icon: csharp,
+  },
+  {
+    name: "Unity",
+    icon: unity,
+  },
+  {
+    name: "Unreal Engine",
+    icon: unreal_engine,
+  },
+];
+
+const academics = [
+  {
+    title: "Bachelor's degree in IT development",
+    school_name: "G.Tech, Gaming Campus, Lyon",
+    icon: gtech,
+    iconBg: "#191919",
+    date: "September 2021 - To Date",
+  },
+  {
+    title: "Baccalaureate STI2D - Information and Digital Systems",
+    school_name: "High school Alexis Monteil, Rodez",
+    icon: blank,
+    iconBg: "#191919",
+    date: "September 2017 - July 2021",
+  },
+  {
+    title: "Aeronautical Initiation Certificate",
+    school_name: "High school Ferdinand Foch, Rodez",
+    icon: bia,
+    iconBg: "#191919",
+    date: "September 2017 - June 2018",
+  },
 ];
 
 const experiences = [
-    {
-        title: "React.js Developer",
-        company_name: "Starbucks",
-        icon: starbucks,
-        iconBg: "#383E56",
-        date: "March 2020 - April 2021",
-        points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
-        ],
-    },
-    {
-        title: "React Native Developer",
-        company_name: "Tesla",
-        icon: tesla,
-        iconBg: "#E6DEDD",
-        date: "Jan 2021 - Feb 2022",
-        points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
-        ],
-    },
-    {
-        title: "Web Developer",
-        company_name: "Shopify",
-        icon: shopify,
-        iconBg: "#383E56",
-        date: "Jan 2022 - Jan 2023",
-        points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
-        ],
-    },
-    {
-        title: "Full stack Developer",
-        company_name: "Meta",
-        icon: meta,
-        iconBg: "#E6DEDD",
-        date: "Jan 2023 - Present",
-        points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
-        ],
-    },
+  {
+    title: "Full Stack Developer",
+    company_name: "Doxio",
+    icon: doxio,
+    iconBg: "#151C52",
+    date: "June 2023 - July 2023",
+    points: [
+      "Spearheaded the creation of web configuration interfaces, integrating the responsive design of React with the robust backend functionality of Laravel.",
+      "Pioneered the deployment and continuous integration strategies, ensuring streamlined and error-free operations.",
+    ],
+  },
+  {
+    title: "Freelance Web Developer",
+    company_name: "Nuit Détente Rodez",
+    icon: nuit_detente,
+    iconBg: "#1F2122",
+    date: "July 2022 - September 2022",
+    points: [
+      "Crafted the architectural blueprint and visual layout for the client’s website, focusing on user-centric design principles.",
+      "Executed the front-end development, employing modern design techniques to enhance user engagement and satisfaction.",
+      "Oversaw the deployment and routine maintenance of the site, prioritizing uptime and seamless content updates.",
+    ],
+  },
 ];
 
+// Not use actually
 const testimonials = [
-    {
-        testimonial:
-            "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-        name: "Sara Lee",
-        designation: "CFO",
-        company: "Acme Co",
-        image: tailwind,
-    },
-    {
-        testimonial:
-            "I've never met a web developer who truly cares about their clients' success like Rick does.",
-        name: "Chris Brown",
-        designation: "COO",
-        company: "DEF Corp",
-        image: tailwind,
-    },
-    {
-        testimonial:
-            "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-        name: "Lisa Wang",
-        designation: "CTO",
-        company: "456 Enterprises",
-        image: tailwind,
-    },
+  {
+    testimonial:
+      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
+    name: "Sara Lee",
+    designation: "CFO",
+    company: "Acme Co",
+    image: null,
+  },
 ];
 
 const projects = [
-    {
-        name: "Car Rent",
-        description:
-            "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
-        tags: [
-            {
-                name: "react",
-                color: "blue-text-gradient",
-            },
-            {
-                name: "mongodb",
-                color: "green-text-gradient",
-            },
-            {
-                name: "tailwind",
-                color: "pink-text-gradient",
-            },
-        ],
-        image: carrent,
-        source_code_link: "https://github.com/",
-    },
-    {
-        name: "Job IT",
-        description:
-            "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
-        tags: [
-            {
-                name: "react",
-                color: "blue-text-gradient",
-            },
-            {
-                name: "restapi",
-                color: "green-text-gradient",
-            },
-            {
-                name: "scss",
-                color: "pink-text-gradient",
-            },
-        ],
-        image: jobit,
-        source_code_link: "https://github.com/",
-    },
-    {
-        name: "Trip Guide",
-        description:
-            "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-        tags: [
-            {
-                name: "nextjs",
-                color: "blue-text-gradient",
-            },
-            {
-                name: "supabase",
-                color: "green-text-gradient",
-            },
-            {
-                name: "css",
-                color: "pink-text-gradient",
-            },
-        ],
-        image: tripguide,
-        source_code_link: "https://github.com/",
-    },
+  {
+    name: "Wakfu Guide",
+    description:
+      "Wakfu Guide, a detailed fansite for Wakfu players, is in active development, enhancing its backend for a full-fledged experience. Built with Next.js, styled with Tailwind CSS, and maintained on GitHub, it's swiftly evolving to provide comprehensive game strategies.",
+    tags: [
+      {
+        name: "nextjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "green-text-gradient",
+      },
+      {
+        name: "github",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: wakfu_guide,
+    source_code_link: "https://github.com/Firzus/wakfu_guide_website.git",
+  },
+  {
+    name: "CapiGun",
+    description:
+      "CapiGun is a thrilling top-down 2D RPG that emphasizes enemy AI sophistication. With behavior trees and state machines, each foe exhibits unique, adaptable combat tactics, challenging players to evolve strategies in real-time. Powered by Unity, this game delivers a fresh take on the action-RPG genre with smart, reactive gameplay.",
+    tags: [
+      {
+        name: "unity",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "behaviorTree",
+        color: "green-text-gradient",
+      },
+      {
+        name: "stateMachine",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: ia,
+    source_code_link:
+      "https://github.com/Firzus/projet-intelligence-artificielle.git",
+  },
+  {
+    name: "Game Engine",
+    description:
+      "This straightforward game engine is our venture into leveraging DirectX 12 with C++ for game development. It's a fundamental tool designed to introduce the basics of 3D game creation. While it may not boast advanced features, its simplicity makes it perfect for understanding core concepts and developing small, functional games. It provides a hands-on approach to learning the nuances of game development and graphics rendering, serving as a stepping stone for aspiring game developers.",
+    tags: [
+      {
+        name: "directX12",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "c++",
+        color: "green-text-gradient",
+      },
+      {
+        name: "github",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: engine,
+    source_code_link: "https://github.com/Styyg/GTech3-DirectX-Engine.git",
+  },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export {
+  services,
+  technologies,
+  experiences,
+  testimonials,
+  projects,
+  academics,
+};
