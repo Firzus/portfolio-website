@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import "react-vertical-timeline-component/style.min.css";
 import "@styles/globals.css";
 
@@ -10,7 +11,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
