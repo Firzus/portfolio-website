@@ -24,12 +24,16 @@ import bia from "./education/bia.png";
 
 // Company
 import doxio from "./company/doxio.png";
-import nuit_detente from "./company/nuit_detente.png";
+import freelance from "./company/freelance.png";
 
 // Showcases
 import wakfu_guide from "./wakfu_guide.png";
 import ia from "./ia.png";
 import engine from "./engine.png";
+import portfolio from "./portfolio.png";
+import plush_memory from "./plush_memory_temporary.png";
+import reminiscence from "./reminiscence.png";
+import nuit_detente from "./nuit_detente.png";
 
 export {
   // Core
@@ -58,10 +62,14 @@ export {
 
   // Company
   doxio,
-  nuit_detente,
+  freelance,
 
   // Showcases
   wakfu_guide,
   ia,
   engine,
+  portfolio,
+  plush_memory,
+  reminiscence,
+  nuit_detente,
 };

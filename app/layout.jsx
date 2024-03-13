@@ -1,4 +1,7 @@
+// Vercel
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import "react-vertical-timeline-component/style.min.css";
 import "@styles/globals.css";
 
@@ -14,6 +17,7 @@ export default function RootLayout({ children }) {
       <body>
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
