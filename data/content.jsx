@@ -19,12 +19,16 @@ import {
 
   // Company
   doxio,
-  nuit_detente,
+  freelance,
 
   // Showcases
   wakfu_guide,
   ia,
   engine,
+  portfolio,
+  plush_memory,
+  reminiscence,
+  nuit_detente,
 } from "../assets";
 
 export const navLinks = [
@@ -127,7 +131,7 @@ const experiences = [
   {
     title: "Freelance Web Developer",
     company_name: "Nuit Détente Rodez",
-    icon: nuit_detente,
+    icon: freelance,
     iconBg: "#1F2122",
     date: "July 2022 - September 2022",
     points: [
@@ -151,6 +155,27 @@ const testimonials = [
 ];
 
 const projects = [
+  {
+    name: "Portfolio",
+    description:
+      "My portfolio website showcases my skills and projects, utilizing Next.js and Tailwind CSS for its construction. It's a testament to my proficiency in web development and design, featuring a clean, modern layout that highlights my work and experience. The website is hosted on Vercel and versioned with GitHub, enabling easy access to the source code and project details. This feature makes it a valuable resource for potential employers and clients.",
+    tags: [
+      {
+        name: "nextjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "green-text-gradient",
+      },
+      {
+        name: "github",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: portfolio,
+    source_code_link: "https://github.com/Firzus/portfolio-website.git",
+  },
   {
     name: "Wakfu Guide",
     description:
@@ -215,6 +240,68 @@ const projects = [
     image: engine,
     source_code_link: "https://github.com/Styyg/GTech3-DirectX-Engine.git",
   },
+  // {
+  //   name: "Plush's Memory",
+  //   description: "Empty description for now.",
+  //   tags: [
+  //     {
+  //       name: "unity",
+  //       color: "blue-text-gradient",
+  //     },
+  //     {
+  //       name: "teamwork",
+  //       color: "green-text-gradient",
+  //     },
+  //     {
+  //       name: "game",
+  //       color: "pink-text-gradient",
+  //     },
+  //   ],
+  //   image: plush_memory,
+  //   source_code_link: "https://github.com/Firzus/plushs-memory.git",
+  // },
+  {
+    name: "Réminiscence",
+    description:
+      "Réminiscence is an escape room game where the player wakes up in a hospital bed, amnesiac and alone, trying to understand who they are and what happened.",
+    tags: [
+      {
+        name: "unity",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "vr",
+        color: "green-text-gradient",
+      },
+      {
+        name: "multi-headset",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: reminiscence,
+    source_code_link: "https://github.com/Firzus/projet-unity-vr.git",
+  },
+  // {
+  //   name: "Nuit Détente Rodez",
+  //   description:
+  //     "Nuit Détente Rodez is my first pro website for a local association in Rodez, France. The site is built with React and Firebase, providing a user-friendly interface for event management and promotion. It's a testament to my expertise in web development and design, featuring a clean, modern layout that highlights the association's activities and services. The website is hosted on Firebase, enabling easy access to the source code and project details. This feature makes it a valuable resource for potential employers and clients.",
+  //   tags: [
+  //     {
+  //       name: "react",
+  //       color: "blue-text-gradient",
+  //     },
+  //     {
+  //       name: "firebase",
+  //       color: "green-text-gradient",
+  //     },
+  //     {
+  //       name: "freelance",
+  //       color: "pink-text-gradient",
+  //     },
+  //   ],
+  //   image: nuit_detente,
+  //   source_code_link: "https://github.com/Firzus/nuit-detente-rodez.git",
+  // },
 ];
 
 export {
