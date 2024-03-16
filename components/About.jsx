@@ -52,7 +52,7 @@ const About = () => {
         I am a French student with a specialization in video game and web
         development. My diverse projects have provided me with extensive
         experience across various domains, utilizing tools like Unity, Unreal
-        Engine, React, and Figma. Known for my meticulous approach and strong
+        Engine, and Figma. Known for my meticulous approach and strong
         leadership skills in team settings, I am eager to contribute my
         expertise to enhance your project.
       </motion.p>

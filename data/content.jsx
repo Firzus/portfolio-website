@@ -161,15 +161,15 @@ const projects = [
       "My portfolio website showcases my skills and projects, utilizing Next.js and Tailwind CSS for its construction. It's a testament to my proficiency in web development and design, featuring a clean, modern layout that highlights my work and experience. The website is hosted on Vercel and versioned with GitHub, enabling easy access to the source code and project details. This feature makes it a valuable resource for potential employers and clients.",
     tags: [
       {
-        name: "nextjs",
+        name: "NextJS",
         color: "blue-text-gradient",
       },
       {
-        name: "tailwind",
+        name: "Vercel",
         color: "green-text-gradient",
       },
       {
-        name: "github",
+        name: "FramerMotion",
         color: "pink-text-gradient",
       },
     ],
@@ -177,20 +177,62 @@ const projects = [
     source_code_link: "https://github.com/Firzus/portfolio-website.git",
   },
   {
+    name: "Réminiscence",
+    description:
+      "Réminiscence is an escape room game where the player wakes up in a hospital bed, amnesiac and alone, trying to understand who they are and what happened. The game is designed for virtual reality, leveraging Unity with the XR Interaction Toolkit to create an immersive and interactive experience.",
+    tags: [
+      {
+        name: "Unity",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "VirtualReality",
+        color: "green-text-gradient",
+      },
+      {
+        name: "XRInteractionToolkit",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: reminiscence,
+    source_code_link: "https://github.com/Firzus/projet-unity-vr.git",
+  },
+  {
+    name: "Game Engine",
+    description:
+      "This straightforward game engine is our venture into leveraging DirectX 12 with C++ for game development. It's a fundamental tool designed to introduce the basics of 3D game creation. While it may not boast advanced features, its simplicity makes it perfect for understanding core concepts and developing small, functional games. It provides a hands-on approach to learning the nuances of game development and graphics rendering, serving as a stepping stone for aspiring game developers.",
+    tags: [
+      {
+        name: "DirectX12",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "C++",
+        color: "green-text-gradient",
+      },
+      {
+        name: ".NET",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: engine,
+    source_code_link: "https://github.com/Styyg/GTech3-DirectX-Engine.git",
+  },
+  {
     name: "Wakfu Guide",
     description:
       "Wakfu Guide, a detailed fansite for Wakfu players, is in active development, enhancing its backend for a full-fledged experience. Built with Next.js, styled with Tailwind CSS, and maintained on GitHub, it's swiftly evolving to provide comprehensive game strategies.",
     tags: [
       {
-        name: "nextjs",
+        name: "NextJS",
         color: "blue-text-gradient",
       },
       {
-        name: "tailwind",
+        name: "TailwindCSS",
         color: "green-text-gradient",
       },
       {
-        name: "github",
+        name: "Figma",
         color: "pink-text-gradient",
       },
     ],
@@ -198,20 +240,41 @@ const projects = [
     source_code_link: "https://github.com/Firzus/wakfu_guide_website.git",
   },
   {
+    name: "Nuit Détente Rodez",
+    description:
+      "It's the inaugural professional website I've crafted as a freelance web developer. The site highlights the client's property and services. It's a straightforward and minimalist website developed using React.",
+    tags: [
+      {
+        name: "ReactJS",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Github",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Freelance",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: nuit_detente,
+    source_code_link: "https://github.com/Firzus/nuit-detente-rodez.git",
+  },
+  {
     name: "CapiGun",
     description:
       "CapiGun is a thrilling top-down 2D RPG that emphasizes enemy AI sophistication. With behavior trees and state machines, each foe exhibits unique, adaptable combat tactics, challenging players to evolve strategies in real-time. Powered by Unity, this game delivers a fresh take on the action-RPG genre with smart, reactive gameplay.",
     tags: [
       {
-        name: "unity",
+        name: "Unity",
         color: "blue-text-gradient",
       },
       {
-        name: "behaviorTree",
+        name: "IA",
         color: "green-text-gradient",
       },
       {
-        name: "stateMachine",
+        name: "Shaders",
         color: "pink-text-gradient",
       },
     ],
@@ -220,88 +283,25 @@ const projects = [
       "https://github.com/Firzus/projet-intelligence-artificielle.git",
   },
   {
-    name: "Game Engine",
-    description:
-      "This straightforward game engine is our venture into leveraging DirectX 12 with C++ for game development. It's a fundamental tool designed to introduce the basics of 3D game creation. While it may not boast advanced features, its simplicity makes it perfect for understanding core concepts and developing small, functional games. It provides a hands-on approach to learning the nuances of game development and graphics rendering, serving as a stepping stone for aspiring game developers.",
+    name: "Plush's Memory",
+    description: "Something is being prepared ...",
     tags: [
       {
-        name: "directX12",
+        name: "Unity",
         color: "blue-text-gradient",
       },
       {
-        name: "c++",
+        name: "Studio",
         color: "green-text-gradient",
       },
       {
-        name: "github",
+        name: "MobileGame",
         color: "pink-text-gradient",
       },
     ],
-    image: engine,
-    source_code_link: "https://github.com/Styyg/GTech3-DirectX-Engine.git",
+    image: plush_memory,
+    source_code_link: "https://github.com/Firzus/plushs-memory.git",
   },
-  // {
-  //   name: "Plush's Memory",
-  //   description: "Empty description for now.",
-  //   tags: [
-  //     {
-  //       name: "unity",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "teamwork",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "game",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image: plush_memory,
-  //   source_code_link: "https://github.com/Firzus/plushs-memory.git",
-  // },
-  {
-    name: "Réminiscence",
-    description:
-      "Réminiscence is an escape room game where the player wakes up in a hospital bed, amnesiac and alone, trying to understand who they are and what happened.",
-    tags: [
-      {
-        name: "unity",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "vr",
-        color: "green-text-gradient",
-      },
-      {
-        name: "multi-headset",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: reminiscence,
-    source_code_link: "https://github.com/Firzus/projet-unity-vr.git",
-  },
-  // {
-  //   name: "Nuit Détente Rodez",
-  //   description:
-  //     "Nuit Détente Rodez is my first pro website for a local association in Rodez, France. The site is built with React and Firebase, providing a user-friendly interface for event management and promotion. It's a testament to my expertise in web development and design, featuring a clean, modern layout that highlights the association's activities and services. The website is hosted on Firebase, enabling easy access to the source code and project details. This feature makes it a valuable resource for potential employers and clients.",
-  //   tags: [
-  //     {
-  //       name: "react",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "firebase",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "freelance",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image: nuit_detente,
-  //   source_code_link: "https://github.com/Firzus/nuit-detente-rodez.git",
-  // },
 ];
 
 export {
