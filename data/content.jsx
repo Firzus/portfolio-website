@@ -22,6 +22,7 @@ import {
   freelance,
 
   // Showcases
+  huzounet,
   wakfu_guide,
   ia,
   engine,
@@ -29,6 +30,7 @@ import {
   plush_memory,
   reminiscence,
   nuit_detente,
+  huzounet_demo,
 } from "../assets";
 
 export const navLinks = [
@@ -94,11 +96,18 @@ const technologies = [
 
 const academics = [
   {
+    title: "Master's degree in IT development",
+    school_name: "G.Tech, Gaming Campus, Lyon",
+    icon: gtech,
+    iconBg: "#191919",
+    date: "September 2024 - To Date",
+  },
+  {
     title: "Bachelor's degree in IT development",
     school_name: "G.Tech, Gaming Campus, Lyon",
     icon: gtech,
     iconBg: "#191919",
-    date: "September 2021 - To Date",
+    date: "September 2021 - September 2024",
   },
   {
     title: "Baccalaureate STI2D - Information and Digital Systems",
@@ -117,6 +126,19 @@ const academics = [
 ];
 
 const experiences = [
+  {
+    title: "Full Stack Developer",
+    company_name: "Huz Studio",
+    icon: huzounet,
+    iconBg: "#151C52",
+    date: "July 2024 - September 2024",
+    points: [
+      "Redesigned the huzounet.fr website.",
+      "Created wireframes and designs using Figma.",
+      "Developed the site using NextJS, PayloadCMS, and TailwindCSS.",
+      "Managed self-hosting on a VPS, set up a CI/CD pipeline, and deployed using Dokploy.",
+    ],
+  },
   {
     title: "Full Stack Developer",
     company_name: "Doxio",
@@ -156,6 +178,27 @@ const testimonials = [
 
 const projects = [
   {
+    name: "Huzounet",
+    description:
+      "Huzounet is a community website designed to assist players of the game Dofus in their progression. It is mainly divided into three sections: equipment, which is an encyclopedia of optimized gear for progression, guides, which are blog-like posts, and tools, which, as the name suggests, are various tools to help players.",
+    tags: [
+      {
+        name: "NextJS",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "SelfHosted",
+        color: "green-text-gradient",
+      },
+      {
+        name: "PayloadCMS",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: huzounet_demo,
+    source_code_link: "https://huzounet.fr",
+  },
+  {
     name: "Portfolio",
     description:
       "My portfolio website showcases my skills and projects, utilizing Next.js and Tailwind CSS for its construction. It's a testament to my proficiency in web development and design, featuring a clean, modern layout that highlights my work and experience. The website is hosted on Vercel and versioned with GitHub, enabling easy access to the source code and project details. This feature makes it a valuable resource for potential employers and clients.",
@@ -165,7 +208,7 @@ const projects = [
         color: "blue-text-gradient",
       },
       {
-        name: "Vercel",
+        name: "SelfHosted",
         color: "green-text-gradient",
       },
       {
@@ -284,18 +327,19 @@ const projects = [
   },
   {
     name: "Plush's Memory",
-    description: "Something is being prepared ...",
+    description:
+      "Plush's Memory is a mobile game developed with Unity. It's a memory game where the player must find pairs of plushies to win. The game features multiple levels, each with increasing difficulty, and a scoring system to track player performance. It's a fun and engaging game that tests memory and cognitive skills.",
     tags: [
       {
         name: "Unity",
         color: "blue-text-gradient",
       },
       {
-        name: "Studio",
+        name: "MiniStudio",
         color: "green-text-gradient",
       },
       {
-        name: "MobileGame",
+        name: "Mobile",
         color: "pink-text-gradient",
       },
     ],

@@ -1,9 +1,7 @@
-// Vercel
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-
 import "react-vertical-timeline-component/style.min.css";
 import "@styles/globals.css";
+
+import Script from "next/script";
 
 export const metadata = {
   title: "Prieu Lilian | Full-Stack & Game Developer Portfolio",
@@ -14,11 +12,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-        <Analytics />
-        <SpeedInsights />
-      </body>
+      <head>
+        <Script
+          defer
+          src="https://analytics.lprieu.dev/script.js"
+          data-website-id="78b3e643-4d2d-4bd8-90d2-adc5bc8d3654"
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

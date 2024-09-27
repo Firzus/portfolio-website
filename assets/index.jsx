@@ -23,15 +23,17 @@ import gtech from "./education/gtech.png";
 import bia from "./education/bia.png";
 
 // Company
+import huzounet from "./huzounet.png";
 import doxio from "./company/doxio.png";
 import freelance from "./company/freelance.png";
 
 // Showcases
+import huzounet_demo from "./huzounet-demo.png";
 import wakfu_guide from "./wakfu_guide.png";
 import ia from "./ia.png";
 import engine from "./engine.png";
 import portfolio from "./portfolio.png";
-import plush_memory from "./plush_memory_temporary.png";
+import plush_memory from "./plush_memory.png";
 import reminiscence from "./reminiscence.png";
 import nuit_detente from "./nuit_detente.png";
 
@@ -61,10 +63,12 @@ export {
   bia,
 
   // Company
+  huzounet,
   doxio,
   freelance,
 
   // Showcases
+  huzounet_demo,
   wakfu_guide,
   ia,
   engine,
