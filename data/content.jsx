@@ -130,7 +130,7 @@ const experiences = [
     title: "Full Stack Developer",
     company_name: "Huz Studio",
     icon: huzounet,
-    iconBg: "#151C52",
+    iconBg: "#1F2122",
     date: "July 2024 - September 2024",
     points: [
       "Redesigned the huzounet.fr website.",

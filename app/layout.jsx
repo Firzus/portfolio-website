@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         <Script
           defer
           src="https://analytics.lprieu.dev/script.js"
-          data-website-id="78b3e643-4d2d-4bd8-90d2-adc5bc8d3654"
+          data-website-id="076dc727-e916-408b-a93c-1f4e43dd48c3"
         />
       </head>
       <body>{children}</body>
