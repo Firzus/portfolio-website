@@ -1,7 +1,7 @@
 import "react-vertical-timeline-component/style.min.css";
 import "@styles/globals.css";
 
-import Script from "next/script";
+import Analytics from "@utils/analytics";
 
 export const metadata = {
   title: "Prieu Lilian | Full-Stack & Game Developer Portfolio",
@@ -13,11 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <Script
-          defer
-          src="https://analytics.lprieu.dev/script.js"
-          data-website-id="076dc727-e916-408b-a93c-1f4e43dd48c3"
-        />
+        <Analytics />
       </head>
       <body>{children}</body>
     </html>
