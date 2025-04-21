@@ -1,3 +1,5 @@
+"use client";
+
 import Script from "next/script";
 
 export default function Analytics() {
@@ -7,9 +9,10 @@ export default function Analytics() {
 
   return (
     <Script
-      defer
-      data-domain="portfolio.lprieu.dev"
-      src="https://analytics.lprieu.dev/js/script.js"
+      src="https://lprieu-analytics.up.railway.app/p12gy4mlfptmuc6w.js"
+      data-ackee-server="https://lprieu-analytics.up.railway.app"
+      data-ackee-domain-id="2fcd2124-0135-4012-8a06-61b9daf10f03"
+      strategy="lazyOnload"
     />
   );
 }
