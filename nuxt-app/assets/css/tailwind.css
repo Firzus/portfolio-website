@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define custom utility classes if not done via Tailwind config plugins */
+.paddingX {
+  @apply px-6; /* Example: 24px padding on left and right. Adjust as per original project's 'paddingX' */
+}
+
+/* It's generally better to define colors in tailwind.config.js, 
+   but you can also define utility classes here if preferred for some reason. */
+/* .bg-primary { ... } */
+/* .text-secondary { ... } */
+
+body {
+  font-family: 'Poppins', sans-serif; /* Ensure Poppins or the correct font is loaded */
+  /* Default background and text colors can also be set here or in app.vue's style */
+}
