@@ -33,5 +33,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            namespace/example:latest
+            firzus/portfolio-website:latest
           platforms: linux/amd64
