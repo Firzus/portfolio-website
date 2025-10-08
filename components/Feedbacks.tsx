@@ -2,7 +2,6 @@
 
 // Core
 import Image from "next/image";
-import type { StaticImageData } from "next/image";
 
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/hoc";
@@ -14,7 +13,7 @@ interface Testimonial {
   name: string;
   designation: string;
   company: string;
-  image: StaticImageData | null;
+  image: string | null;
 }
 
 const FeedbackCard = ({
@@ -45,11 +44,15 @@ const FeedbackCard = ({
           </p>
         </div>
 
-        <Image
-          src={image}
-          alt={`feedback-by-${name}`}
-          className="w-10 h-10 rounded-full object-cover"
-        />
+        {image && (
+          <Image
+            src={image}
+            alt={`feedback-by-${name}`}
+            className="w-10 h-10 rounded-full object-cover"
+            width={40}
+            height={40}
+          />
+        )}
       </div>
     </div>
   </motion.div>

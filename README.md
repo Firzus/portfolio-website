@@ -8,7 +8,6 @@ Ce projet est un site portfolio construit avec Next.js (App Router), TypeScript,
 - `pnpm build` : génère le build de production
 - `pnpm start` : démarre le serveur de production
 - `pnpm lint` : exécute ESLint
-- `pnpm type-check` : lance la vérification TypeScript
 
 ## Docker
 

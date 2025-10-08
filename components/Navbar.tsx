@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 // Data
-import { logo, menu, close } from "@/assets";
+import { logo, menu, close } from "@/public/assets";
 import { navLinks } from "@/data/content";
 
 export default function Navbar() {

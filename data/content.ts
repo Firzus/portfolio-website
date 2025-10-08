@@ -31,7 +31,7 @@ import {
   reminiscence,
   nuit_detente,
   huzounet_demo,
-} from "@/assets";
+} from "@/public/assets";
 
 export const navLinks = [
   {

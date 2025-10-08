@@ -1,9 +1,9 @@
 // Core
-import logo from "./logo.svg";
-import github from "./github.png";
-import menu from "./menu.svg";
-import close from "./close.svg";
-import blank from "./blank.png";
+import logo from "/public/assets/logo.svg";
+import github from "/public/assets/github.png";
+import menu from "/public/assets/menu.svg";
+import close from "/public/assets/close.svg";
+import blank from "/public/assets/blank.png";
 
 // Domains
 import web from "./web.png";

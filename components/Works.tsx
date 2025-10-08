@@ -6,7 +6,7 @@ import type { StaticImageData } from "next/image";
 
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
-import { github } from "@/assets";
+import { github } from "@/public/assets";
 import { projects } from "@/data/content";
 import { fadeIn, textVariant } from "@/utils/motion";
 import { SectionWrapper } from "@/hoc";
