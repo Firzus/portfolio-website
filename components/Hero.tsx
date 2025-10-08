@@ -1,48 +1,105 @@
-"use client";
+'use client'
 
 // Core
-import Link from "next/link";
-
-import { ComputersCanvas } from "./canvas";
-import { motion } from "framer-motion";
+import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen mx-auto">
-      <div className="paddingX absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5">
-        <div className="flex flex-col justify-center items-center mt-5">
-          <div className="w-5 h-5 rounded-full bg-[#915eff]" />
-          <div className="w-1 sm:h-80 h-40 violet-gradient" />
-        </div>
-
-        <div>
-          <h1 className="heroHeadText text-white">
-            Hi, I&apos;m <span className="text-[#915eff]">Lilian</span>
-          </h1>
-          <p className="heroSubText mt-2 text-white-100">
-            I develop video games, websites,
-            <br className="sm:block hidden" /> and I also do interface design.
-          </p>
-        </div>
+    <section className="relative mx-auto h-screen w-full overflow-hidden bg-primary">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute -top-[40%] -right-[20%] h-[80%] w-[80%] rounded-full opacity-20 blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, #bd34fe 0%, transparent 70%)',
+          }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-[40%] -left-[20%] h-[80%] w-[80%] rounded-full opacity-20 blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, #41d1ff 0%, transparent 70%)',
+          }}
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
       </div>
 
-      <ComputersCanvas />
+      {/* Main content */}
+      <div className="paddingX relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="heroHeadText mb-6 text-white">
+            Hi, I&apos;m <span className="violet-text-gradient">Lilian</span>
+          </h1>
+          <p className="max-w-3xl heroSubText">
+            I develop video games, websites, and I also do interface design.
+            <br />
+            Building modern experiences with cutting-edge technologies.
+          </p>
 
-      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
+          {/* CTA Buttons */}
+          <div className="mt-10 flex flex-wrap gap-4">
+            <Link href="#work">
+              <motion.button
+                className="violet-gradient rounded-lg px-8 py-3 font-medium text-white transition-opacity hover:opacity-90"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View My Work
+              </motion.button>
+            </Link>
+            <Link href="#contact">
+              <motion.button
+                className="rounded-lg border border-[#bd34fe] px-8 py-3 font-medium text-white transition-colors hover:bg-[#bd34fe]/10"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get In Touch
+              </motion.button>
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-10 flex w-full items-center justify-center">
         <Link href="#about">
-          <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
+          <motion.div
+            className="flex h-[52px] w-[32px] cursor-pointer items-start justify-center rounded-full border-2 border-secondary/50 p-2 transition-colors hover:border-secondary"
+            whileHover={{ scale: 1.1 }}
+          >
             <motion.div
-              className="w-3 h-3 rounded-full bg-secondary mb-1"
-              animate={{ y: [0, 24, 0] }}
+              className="mb-1 h-2 w-2 rounded-full bg-secondary"
+              animate={{ y: [0, 20, 0] }}
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
-                repeatType: "loop",
+                repeatType: 'loop',
               }}
             />
-          </div>
+          </motion.div>
         </Link>
       </div>
     </section>
-  );
+  )
 }
