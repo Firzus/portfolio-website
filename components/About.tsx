@@ -9,12 +9,14 @@ import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "@/utils/motion";
 
 // Content
+import type { StaticImageData } from "next/image";
+
 import { services } from "@/data/content";
 import { SectionWrapper } from "@/hoc";
 
 interface Service {
   title: string;
-  icon: string;
+  icon: StaticImageData;
 }
 
 const ServiceCard = ({ index, title, icon }: Service & { index: number }) => {
@@ -44,7 +46,7 @@ const About = () => {
       </motion.div>
 
       <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
+        variants={fadeIn("none", "spring", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
         I am a French student with a specialization in video game and web

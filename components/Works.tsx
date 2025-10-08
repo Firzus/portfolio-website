@@ -2,6 +2,7 @@
 
 // Core
 import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
@@ -20,7 +21,7 @@ interface ProjectCardProps {
   name: string;
   description: string;
   tags: ProjectTag[];
-  image: string;
+  image: StaticImageData;
   source_code_link: string;
 }
 
@@ -90,7 +91,7 @@ const Works = () => {
 
       <div className="w-full flex">
         <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
+          variants={fadeIn("none", "spring", 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
           Following projects showcases my skills and experience through

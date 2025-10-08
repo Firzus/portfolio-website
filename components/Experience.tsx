@@ -2,6 +2,7 @@
 
 // Base
 import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 // Lib
 import {
@@ -18,7 +19,7 @@ import { textVariant } from "@/utils/motion";
 interface ExperiencePoint {
   title: string;
   company_name: string;
-  icon: string;
+  icon: StaticImageData;
   iconBg: string;
   date: string;
   points: string[];
@@ -77,7 +78,10 @@ const Experience = () => {
       <div className="mt-20 flex flex-col">
         <VerticalTimeline lineColor="">
           {experiences.map((experience) => (
-            <ExperienceCard key={experience.title} experience={experience} />
+            <ExperienceCard
+              key={`${experience.title}-${experience.company_name}-${experience.date}`}
+              experience={experience}
+            />
           ))}
         </VerticalTimeline>
       </div>

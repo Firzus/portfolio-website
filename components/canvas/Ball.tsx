@@ -41,7 +41,11 @@ const Ball = ({ imgUrl }: BallProps) => {
   );
 };
 
-const BallCanvas = ({ icon }: { icon: string }) => {
+interface BallCanvasProps {
+  icon: string;
+}
+
+const BallCanvas = ({ icon }: BallCanvasProps) => {
   return (
     <Canvas
       frameloop="demand"

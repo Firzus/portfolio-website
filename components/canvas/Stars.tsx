@@ -1,40 +1,38 @@
 "use client";
 
 // Core
-import { Suspense, useRef } from "react";
+import { Suspense, useMemo, useRef } from "react";
 import type { Group } from "three";
+import type { ThreeElements } from "@react-three/fiber";
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import { inSphere } from "maath/random";
 
-const Stars = (props: JSX.IntrinsicElements["group"]) => {
-  const ref = useRef<Group>(null);
-  const positions = useRef<Float32Array>(
-    inSphere(new Float32Array(6000), { radius: 1.2 })
+type GroupProps = ThreeElements["group"];
+
+const Stars = (props: GroupProps) => {
+  const groupRef = useRef<Group>(null);
+  const positions = useMemo(
+    () => inSphere(new Float32Array(6000), { radius: 1.2 }) as Float32Array,
+    []
   );
 
-  useFrame((state, delta) => {
-    if (ref.current) {
-      ref.current.rotation.x -= delta / 10;
-      ref.current.rotation.y -= delta / 15;
+  useFrame((_, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.x -= delta / 10;
+      groupRef.current.rotation.y -= delta / 15;
     }
   });
 
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points
-        ref={ref}
-        positions={positions.current}
-        stride={3}
-        frustumCulled
-        {...props}
-      >
+    <group ref={groupRef} rotation={[0, 0, Math.PI / 4]} {...props}>
+      <Points positions={positions} stride={3} frustumCulled>
         <PointMaterial
           transparent
           color="#f272c8"
           size={0.002}
-          sizeAttenuation={true}
+          sizeAttenuation
           depthWrite={false}
         />
       </Points>

@@ -2,6 +2,7 @@
 
 // Core
 import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 // Lib
 import {
@@ -18,7 +19,7 @@ import { textVariant } from "@/utils/motion";
 interface Academic {
   title: string;
   school_name: string;
-  icon: string;
+  icon: StaticImageData;
   iconBg: string;
   date: string;
 }
@@ -63,7 +64,10 @@ const Education = () => {
       <div className="mt-20 flex flex-col">
         <VerticalTimeline lineColor="">
           {academics.map((academic) => (
-            <EducationCard key={academic.title} academic={academic} />
+            <EducationCard
+              key={`${academic.title}-${academic.school_name}`}
+              academic={academic}
+            />
           ))}
         </VerticalTimeline>
       </div>

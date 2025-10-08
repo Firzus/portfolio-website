@@ -1,6 +1,8 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
+
+type MediaQueryListEventLike = MediaQueryListEvent | { matches: boolean };
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
@@ -42,7 +44,7 @@ export default function ComputersCanvas() {
 
     setIsMobile(mediaQuery.matches);
 
-    const handleMediaQueryChange = (event) => {
+    const handleMediaQueryChange = (event: MediaQueryListEventLike) => {
       setIsMobile(event.matches);
     };
 

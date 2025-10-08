@@ -1,7 +1,5 @@
 import type { Transition, Variants } from "framer-motion";
 
-type Direction = "left" | "right" | "up" | "down";
-
 const DEFAULT_EASE: Transition["ease"] = [0.25, 0.1, 0.25, 1];
 
 const buildTransition = (
@@ -28,8 +26,10 @@ export const textVariant = (delay = 0): Variants => ({
   },
 });
 
+export type Direction = "left" | "right" | "up" | "down" | "none";
+
 export const fadeIn = (
-  direction?: Direction,
+  direction: Direction = "none",
   type: Transition["type"] = "spring",
   delay = 0,
   duration = 0.75

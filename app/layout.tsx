@@ -1,5 +1,5 @@
 import "react-vertical-timeline-component/style.min.css";
-import "@styles/globals.css";
+import "../styles/globals.css";
 
 import Analytics from "@/utils/analytics";
 

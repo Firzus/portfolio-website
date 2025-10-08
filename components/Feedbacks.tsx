@@ -2,6 +2,7 @@
 
 // Core
 import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/hoc";
@@ -13,7 +14,7 @@ interface Testimonial {
   name: string;
   designation: string;
   company: string;
-  image: string | null;
+  image: StaticImageData | null;
 }
 
 const FeedbackCard = ({
@@ -25,10 +26,10 @@ const FeedbackCard = ({
   image,
 }: Testimonial & { index: number }) => (
   <motion.div
-    variants={fadeIn("", "spring", index * 0.5, 0.75)}
+    variants={fadeIn("none", "spring", index * 0.5, 0.75)}
     className="bg-black-200 p-10 rounded-3xl xs:w-[320px] w-full"
   >
-    <p className="text-white font-black text-[48px]">""</p>
+    <p className="text-white font-black text-[48px]">&ldquo;&rdquo;</p>
 
     <div className="mt-1">
       <p className="text-white tracking-wider text-[18px]">{testimonial}</p>
