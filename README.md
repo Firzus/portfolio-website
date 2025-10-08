@@ -4,11 +4,11 @@ Ce projet est un site portfolio construit avec Next.js (App Router), TypeScript,
 
 ## Scripts
 
-- `npm run dev` : lance le serveur de développement
-- `npm run build` : génère le build de production
-- `npm run start` : démarre le serveur de production
-- `npm run lint` : exécute ESLint
-- `npm run type-check` : lance la vérification TypeScript
+- `pnpm dev` : lance le serveur de développement
+- `pnpm build` : génère le build de production
+- `pnpm start` : démarre le serveur de production
+- `pnpm lint` : exécute ESLint
+- `pnpm type-check` : lance la vérification TypeScript
 
 ## Docker
 
@@ -21,7 +21,7 @@ docker run -p 3000:3000 portfolio-website
 
 ## CI/CD
 
-- Un workflow GitHub Actions (`.github/workflows/docker-build.yml`) construit et pousse l’image Docker sur Docker Hub à chaque push sur `main`.
+- Un workflow GitHub Actions (`.github/workflows/docker-build.yml`) construit et pousse l’image Docker sur Docker Hub à chaque push sur `main` (installe pnpm via Corepack).
 - Renseigne les secrets `DOCKERHUB_USERNAME` et `DOCKERHUB_TOKEN` avant d’activer le workflow.
 
 ## Configuration
