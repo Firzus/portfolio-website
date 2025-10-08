@@ -19,6 +19,11 @@ docker build -t portfolio-website .
 docker run -p 3000:3000 portfolio-website
 ```
 
+## CI/CD
+
+- Un workflow GitHub Actions (`.github/workflows/docker-build.yml`) construit et pousse l’image Docker sur Docker Hub à chaque push sur `main`.
+- Renseigne les secrets `DOCKERHUB_USERNAME` et `DOCKERHUB_TOKEN` avant d’activer le workflow.
+
 ## Configuration
 
 - `tailwind.config.cjs` et `postcss.config.cjs` sont en CommonJS pour fonctionner avec le mode ESM global.
