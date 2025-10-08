@@ -1,28 +1,28 @@
-"use client";
+'use client'
 
 // Core
-import Image from "next/image";
-import type { StaticImageData } from "next/image";
+import Image from 'next/image'
+import type { StaticImageData } from 'next/image'
 
-import Tilt from "react-parallax-tilt";
-import { motion } from "framer-motion";
-import { github } from "@/public/assets";
-import { projects } from "@/data/content";
-import { fadeIn, textVariant } from "@/utils/motion";
-import { SectionWrapper } from "@/hoc";
+import Tilt from 'react-parallax-tilt'
+import { motion } from 'framer-motion'
+import { github } from '@/public/assets'
+import { projects } from '@/data/content'
+import { fadeIn, textVariant } from '@/utils/motion'
+import { SectionWrapper } from '@/hoc'
 
 interface ProjectTag {
-  name: string;
-  color: string;
+  name: string
+  color: string
 }
 
 interface ProjectCardProps {
-  index: number;
-  name: string;
-  description: string;
-  tags: ProjectTag[];
-  image: StaticImageData;
-  source_code_link: string;
+  index: number
+  name: string
+  description: string
+  tags: ProjectTag[]
+  image: StaticImageData
+  source_code_link: string
 }
 
 const ProjectCard = ({
@@ -34,39 +34,31 @@ const ProjectCard = ({
   source_code_link,
 }: ProjectCardProps) => {
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <motion.div variants={fadeIn('up', 'spring', index * 0.5, 0.75)}>
       <Tilt
-        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
+        className="w-full rounded-2xl bg-tertiary p-5 sm:w-[360px]"
         tiltMaxAngleX={45}
         tiltMaxAngleY={45}
         perspective={1000}
         transitionSpeed={450}
         gyroscope
       >
-        <div className="relative w-full h-[230px]">
-          <Image
-            className="w-full h-full object-cover rounded-2xl"
-            src={image}
-            alt={name}
-          />
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+        <div className="relative h-[230px] w-full">
+          <Image className="h-full w-full rounded-2xl object-cover" src={image} alt={name} />
+          <div className="card-img_hover absolute inset-0 m-3 flex justify-end">
             <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              onClick={() => window.open(source_code_link, '_blank')}
+              className="black-gradient flex h-10 w-10 cursor-pointer items-center justify-center rounded-full"
             >
-              <Image
-                src={github}
-                alt="github"
-                className="w-1/2 h-1/2 object-contain"
-              />
+              <Image src={github} alt="github" className="h-1/2 w-1/2 object-contain" />
             </div>
           </div>
         </div>
 
         <div className="mt-5">
-          <h3 className="text-white font-bold text-[24px]">{name}</h3>
+          <h3 className="text-[24px] font-bold text-white">{name}</h3>
 
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
+          <p className="mt-2 text-[14px] text-secondary">{description}</p>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-2">
@@ -78,8 +70,8 @@ const ProjectCard = ({
         </div>
       </Tilt>
     </motion.div>
-  );
-};
+  )
+}
 
 const Works = () => {
   return (
@@ -89,15 +81,14 @@ const Works = () => {
         <h2 className="sectionHeadText">Projects.</h2>
       </motion.div>
 
-      <div className="w-full flex">
+      <div className="flex w-full">
         <motion.p
-          variants={fadeIn("none", "spring", 0.1, 1)}
-          className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
+          variants={fadeIn('none', 'spring', 0.1, 1)}
+          className="mt-3 max-w-3xl text-[17px] leading-[30px] text-secondary"
         >
-          Following projects showcases my skills and experience through
-          real-world examples of my work. Each project is briefly described with
-          links to code repositories and live demos in it. It reflects my
-          ability to solve complex problems, work with different technologies,
+          Following projects showcases my skills and experience through real-world examples of my
+          work. Each project is briefly described with links to code repositories and live demos in
+          it. It reflects my ability to solve complex problems, work with different technologies,
           and manage projects effectively.
         </motion.p>
       </div>
@@ -108,7 +99,7 @@ const Works = () => {
         ))}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SectionWrapper(Works, "");
+export default SectionWrapper(Works, '')
