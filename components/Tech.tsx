@@ -1,8 +1,8 @@
 "use client";
 
-import { SectionWrapper } from "@hoc";
-import { technologies } from "../data/content";
-import { BallCanvas } from "@components/canvas";
+import { SectionWrapper } from "@/hoc";
+import { technologies } from "@/data/content";
+import { BallCanvas } from "@/components/canvas";
 
 const Tech = () => {
   return (

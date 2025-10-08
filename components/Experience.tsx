@@ -1,23 +1,35 @@
-'use client'
+"use client";
 
 // Base
-import Image from "next/image"
+import Image from "next/image";
 
 // Lib
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import { motion } from 'framer-motion'
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import { motion } from "framer-motion";
 
 // Components
-import { SectionWrapper } from "@hoc"
-import { experiences } from '@data/content'
-import { textVariant } from "@utils/motion"
+import { SectionWrapper } from "@/hoc";
+import { experiences } from "@/data/content";
+import { textVariant } from "@/utils/motion";
 
-const ExperienceCard = ({ experience }) => {
+interface ExperiencePoint {
+  title: string;
+  company_name: string;
+  icon: string;
+  iconBg: string;
+  date: string;
+  points: string[];
+}
+
+const ExperienceCard = ({ experience }: { experience: ExperiencePoint }) => {
   return (
     <VerticalTimelineElement
       visible={true}
-      contentStyle={{ background: '#1d1836', color: '#fff' }}
-      contentArrowStyle={{ borderRight: '7px solid #232631' }}
+      contentStyle={{ background: "#1d1836", color: "#fff" }}
+      contentArrowStyle={{ borderRight: "7px solid #232631" }}
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
@@ -32,7 +44,10 @@ const ExperienceCard = ({ experience }) => {
     >
       <div>
         <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
-        <p className="text-secondary text-[16px] font-semibold" style={{ margin: 0 }}>
+        <p
+          className="text-secondary text-[16px] font-semibold"
+          style={{ margin: 0 }}
+        >
           {experience.company_name}
         </p>
       </div>
@@ -54,23 +69,20 @@ const ExperienceCard = ({ experience }) => {
 const Experience = () => {
   return (
     <>
-      <motion.div variants={textVariant()} >
-        <p className='sectionSubText'>What I have done so far</p>
-        <h2 className='sectionHeadText'>Work Experience.</h2>
+      <motion.div variants={textVariant()}>
+        <p className="sectionSubText">What I have done so far</p>
+        <h2 className="sectionHeadText">Work Experience.</h2>
       </motion.div>
 
       <div className="mt-20 flex flex-col">
         <VerticalTimeline lineColor="">
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={index}
-              experience={experience}
-            />
+          {experiences.map((experience) => (
+            <ExperienceCard key={experience.title} experience={experience} />
           ))}
         </VerticalTimeline>
-      </div >
+      </div>
     </>
-  )
-}
+  );
+};
 
 export default SectionWrapper(Experience, "work");

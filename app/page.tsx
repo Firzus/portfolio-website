@@ -8,7 +8,7 @@ import {
   Works,
   StarsCanvas,
   Education,
-} from "@components";
+} from "@/components";
 
 export default function Main() {
   return (

@@ -3,12 +3,26 @@
 // Core
 import Image from "next/image";
 
-import { Tilt } from "react-tilt";
+import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
-import { github } from "@assets";
-import { projects } from "@data/content";
-import { fadeIn, textVariant } from "@utils/motion";
-import { SectionWrapper } from "@hoc";
+import { github } from "@/assets";
+import { projects } from "@/data/content";
+import { fadeIn, textVariant } from "@/utils/motion";
+import { SectionWrapper } from "@/hoc";
+
+interface ProjectTag {
+  name: string;
+  color: string;
+}
+
+interface ProjectCardProps {
+  index: number;
+  name: string;
+  description: string;
+  tags: ProjectTag[];
+  image: string;
+  source_code_link: string;
+}
 
 const ProjectCard = ({
   index,
@@ -17,16 +31,16 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
-}) => {
+}: ProjectCardProps) => {
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
         className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
+        tiltMaxAngleX={45}
+        tiltMaxAngleY={45}
+        perspective={1000}
+        transitionSpeed={450}
+        gyroscope
       >
         <div className="relative w-full h-[230px]">
           <Image
@@ -89,7 +103,7 @@ const Works = () => {
 
       <div className="mt-20 flex flex-wrap gap-7">
         {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
+          <ProjectCard key={project.name} index={index} {...project} />
         ))}
       </div>
     </>
