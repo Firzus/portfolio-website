@@ -1,14 +1,8 @@
 // Core
-import logo from './logo.svg'
 import github from './github.png'
 import menu from './menu.svg'
 import close from './close.svg'
 import blank from './blank.png'
-
-// Domains
-import web from './web.png'
-import design from './design.png'
-import game from './game.png'
 
 // Balls
 import cpp from './tech/cpp.png'
@@ -39,16 +33,10 @@ import nuit_detente from './nuit_detente.png'
 
 export {
   // Core
-  logo,
   github,
   menu,
   close,
   blank,
-
-  // Domains
-  web,
-  design,
-  game,
 
   // Balls
   cpp,

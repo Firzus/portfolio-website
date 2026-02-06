@@ -1,4 +1,5 @@
 import type { StaticImageData } from 'next/image'
+import type { ReactNode } from 'react'
 
 export interface NavLink {
   id: string
@@ -7,7 +8,7 @@ export interface NavLink {
 
 export interface Service {
   title: string
-  icon: StaticImageData
+  icon: ReactNode
 }
 
 export interface Technology {

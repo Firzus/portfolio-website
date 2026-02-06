@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 // Data
-import { logo, menu, close } from '@/public/assets'
+import { menu, close } from '@/public/assets'
 import { navLinks } from '@/data/content'
 
 export default function Navbar() {
@@ -39,18 +39,13 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="group flex items-center gap-3"
+          className="group flex items-center"
           onClick={() => {
             setActive('')
             window.scrollTo(0, 0)
           }}
         >
-          <Image
-            src={logo}
-            alt="logo"
-            className="h-8 w-8 object-contain transition-opacity group-hover:opacity-80"
-          />
-          <span className="font-[family-name:var(--font-syne)] text-base font-bold tracking-tight text-neutral-50">
+          <span className="font-[family-name:var(--font-syne)] text-xl font-bold tracking-tight text-neutral-50 transition-colors duration-300 group-hover:text-accent">
             LP<span className="text-accent">.</span>
           </span>
         </Link>

@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${syne.variable} ${outfit.variable}`}>
       <head />
-      <body className="font-[family-name:var(--font-outfit)]">
+      <body className="font-(family-name:--font-outfit)">
         {children}
         <div className="grain-overlay" aria-hidden="true" />
       </body>

@@ -1,8 +1,5 @@
 import {
   // Core
-  web,
-  design,
-  game,
   blank,
 
   // Balls
@@ -65,15 +62,90 @@ export const navLinks = [
 export const services = [
   {
     title: 'Game Maker',
-    icon: game,
+    icon: (
+      <svg
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-full w-full"
+      >
+        {/* Joystick base */}
+        <path d="M8 26h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path
+          d="M10 26v-3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        {/* Stick */}
+        <path d="M16 21V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        {/* Stick grip */}
+        <circle cx="16" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="16" cy="8" r="1" fill="currentColor" />
+      </svg>
+    ),
   },
   {
     title: 'Frontend',
-    icon: web,
+    icon: (
+      <svg
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-full w-full"
+      >
+        <path
+          d="M11 10L5 16l6 6"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M21 10l6 6-6 6"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path d="M18 7l-4 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
     title: 'Web Design',
-    icon: design,
+    icon: (
+      <svg
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-full w-full"
+      >
+        <path
+          d="M22 4L6 20l-1 7 7-1L28 10l-6-6z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M19 7l6 6"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M5 20l7 7"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity="0.4"
+        />
+      </svg>
+    ),
   },
 ] satisfies Service[]
 

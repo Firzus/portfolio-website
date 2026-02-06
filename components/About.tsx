@@ -1,8 +1,5 @@
 'use client'
 
-// Core
-import Image from 'next/image'
-
 // Module
 import { motion } from 'framer-motion'
 import { fadeIn, textVariant } from '@/utils/motion'
@@ -21,12 +18,8 @@ const ServiceCard = ({ index, title, icon }: Service & { index: number }) => {
         <div className="absolute top-0 left-0 h-px w-8 bg-accent/50 transition-all duration-500 group-hover:w-16 group-hover:bg-accent" />
         <div className="absolute top-0 left-0 h-8 w-px bg-accent/50 transition-all duration-500 group-hover:h-16 group-hover:bg-accent" />
 
-        <div className="flex h-14 w-14 items-center justify-center bg-neutral-900/80">
-          <Image
-            src={icon}
-            alt={title}
-            className="h-9 w-9 object-contain transition-transform duration-500 group-hover:scale-110"
-          />
+        <div className="flex h-14 w-14 items-center justify-center bg-neutral-900/80 text-neutral-400 transition-colors duration-500 group-hover:text-accent">
+          <div className="h-8 w-8">{icon}</div>
         </div>
 
         <div>
