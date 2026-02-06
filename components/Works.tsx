@@ -2,28 +2,16 @@
 
 // Core
 import Image from 'next/image'
-import type { StaticImageData } from 'next/image'
 
-import Tilt from 'react-parallax-tilt'
 import { motion } from 'framer-motion'
+
+// Types
+import type { Project } from '@/types'
+
 import { github } from '@/public/assets'
 import { projects } from '@/data/content'
 import { fadeIn, textVariant } from '@/utils/motion'
 import { SectionWrapper } from '@/hoc'
-
-interface ProjectTag {
-  name: string
-  color: string
-}
-
-interface ProjectCardProps {
-  index: number
-  name: string
-  description: string
-  tags: ProjectTag[]
-  image: StaticImageData
-  source_code_link: string
-}
 
 const ProjectCard = ({
   index,
@@ -32,45 +20,44 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
-}: ProjectCardProps) => {
+}: Project & { index: number }) => {
   return (
-    <motion.div
-      variants={fadeIn('up', 'spring', index * 0.15, 0.6)}
-      className="group w-full sm:w-[360px]"
-    >
-      <div className="relative w-full rounded-2xl border border-transparent bg-tertiary p-5 transition-all duration-300 hover:border-[#bd34fe]/50 hover:shadow-[0_0_30px_rgba(189,52,254,0.2)]">
-        {/* Gradient overlay on hover */}
-        <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-[#bd34fe]/5 to-[#41d1ff]/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+    <motion.div variants={fadeIn('up', 'tween', index * 0.1, 0.6)} className="group">
+      <div className="relative flex h-full flex-col overflow-hidden border border-neutral-800/50 bg-surface transition-all duration-500 hover:border-accent/30">
+        {/* Image */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden">
+          <Image
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            src={image}
+            alt={name}
+          />
+          {/* Overlay gradient */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-60" />
 
-        <div className="relative z-10">
-          <div className="relative h-[230px] w-full overflow-hidden rounded-2xl">
-            <Image
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              src={image}
-              alt={name}
-            />
-            <div className="absolute inset-0 flex items-start justify-end p-3">
-              <div
-                onClick={() => window.open(source_code_link, '_blank')}
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black/80 backdrop-blur-sm transition-colors hover:bg-[#bd34fe]"
-              >
-                <Image src={github} alt="github" className="h-1/2 w-1/2 object-contain" />
-              </div>
-            </div>
-          </div>
+          {/* Source link */}
+          <a
+            href={source_code_link}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View source code for ${name}`}
+            className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center bg-primary/80 backdrop-blur-sm transition-all duration-300 hover:bg-accent"
+          >
+            <Image src={github} alt="" className="h-4 w-4 object-contain invert" />
+          </a>
+        </div>
 
-          <div className="mt-5">
-            <h3 className="text-2xl font-bold text-white">{name}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-secondary">{description}</p>
-          </div>
+        {/* Content */}
+        <div className="flex flex-1 flex-col gap-3 p-6">
+          <h3 className="font-[family-name:var(--font-syne)] text-lg font-bold text-neutral-100">
+            {name}
+          </h3>
+          <p className="line-clamp-3 text-sm leading-relaxed text-neutral-500">{description}</p>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          {/* Tags */}
+          <div className="mt-auto flex flex-wrap gap-2 pt-4">
             {tags.map((tag) => (
-              <span
-                key={tag.name}
-                className={`rounded-full bg-primary/50 px-3 py-1 text-sm ${tag.color} font-medium`}
-              >
-                #{tag.name}
+              <span key={tag.name} className={`text-xs font-medium tracking-wider ${tag.color}`}>
+                {tag.name}
               </span>
             ))}
           </div>
@@ -83,24 +70,27 @@ const ProjectCard = ({
 const Works = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <motion.div variants={textVariant()} className="flex flex-col gap-3">
         <p className="sectionSubText">My work</p>
-        <h2 className="sectionHeadText">Projects.</h2>
+        <h2 className="font-[family-name:var(--font-syne)] sectionHeadText">
+          Projects<span className="text-accent">.</span>
+        </h2>
       </motion.div>
 
-      <div className="flex w-full">
-        <motion.p
-          variants={fadeIn('none', 'spring', 0.1, 1)}
-          className="mt-3 max-w-3xl text-[17px] leading-[30px] text-secondary"
-        >
-          Following projects showcases my skills and experience through real-world examples of my
-          work. Each project is briefly described with links to code repositories and live demos in
-          it. It reflects my ability to solve complex problems, work with different technologies,
-          and manage projects effectively.
-        </motion.p>
-      </div>
+      <motion.div variants={fadeIn('none', 'tween', 0.1, 0.8)} className="mt-2">
+        <div className="accent-rule-line mb-4 max-w-xs" />
+      </motion.div>
 
-      <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <motion.p
+        variants={fadeIn('none', 'tween', 0.15, 0.8)}
+        className="mt-2 max-w-2xl text-base leading-relaxed text-neutral-400"
+      >
+        Real-world projects showcasing my skills across web development, game design, and creative
+        tooling. Each project reflects my ability to solve complex problems and ship polished
+        experiences.
+      </motion.p>
+
+      <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
           <ProjectCard key={project.name} index={index} {...project} />
         ))}

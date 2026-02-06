@@ -5,7 +5,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 // React
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+// Lib
+import { motion, AnimatePresence } from 'framer-motion'
 
 // Data
 import { logo, menu, close } from '@/public/assets'
@@ -14,10 +17,26 @@ import { navLinks } from '@/data/content'
 export default function Navbar() {
   const [active, setActive] = useState('')
   const [toggle, setToggle] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <nav className="paddingX fixed top-0 z-20 flex w-full items-center border-b border-white/5 bg-primary/80 py-5 backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
+    <nav
+      className={`paddingX fixed top-0 z-20 flex w-full items-center py-4 transition-all duration-500 ${
+        scrolled
+          ? 'border-b border-neutral-800/50 bg-primary/90 backdrop-blur-md'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between">
+        {/* Logo */}
         <Link
           href="/"
           className="group flex items-center gap-3"
@@ -26,87 +45,88 @@ export default function Navbar() {
             window.scrollTo(0, 0)
           }}
         >
-          <div className="relative">
-            <Image
-              src={logo}
-              alt="logo"
-              className="h-9 w-9 object-contain transition-transform group-hover:scale-110"
-            />
-            <div className="absolute inset-0 rounded-full bg-[#bd34fe]/20 opacity-0 blur-xl transition-opacity group-hover:opacity-100" />
-          </div>
-
-          <p className="flex cursor-pointer items-center text-lg font-semibold text-white">
-            Lilian&nbsp;
-            <span className="violet-text-gradient hidden sm:block">Prieu</span>
-          </p>
+          <Image
+            src={logo}
+            alt="logo"
+            className="h-8 w-8 object-contain transition-opacity group-hover:opacity-80"
+          />
+          <span className="font-[family-name:var(--font-syne)] text-base font-bold tracking-tight text-neutral-50">
+            LP<span className="text-accent">.</span>
+          </span>
         </Link>
 
-        <ul className="hidden list-none flex-row gap-8 sm:flex">
+        {/* Desktop nav */}
+        <ul className="hidden list-none flex-row gap-10 sm:flex">
           {navLinks.map((link) => (
-            <li
-              key={link.id}
-              className="relative"
-              onClick={() => {
-                setActive(link.title)
-              }}
-            >
+            <li key={link.id}>
               <Link
                 href={`#${link.id}`}
-                className={`${
-                  active === link.title ? 'text-white' : 'text-secondary'
-                } group relative cursor-pointer text-base font-medium transition-colors hover:text-white`}
+                onClick={() => setActive(link.title)}
+                className={`relative text-sm font-medium tracking-wide transition-colors duration-300 ${
+                  active === link.title ? 'text-accent' : 'text-neutral-400 hover:text-neutral-100'
+                }`}
               >
                 {link.title}
-                <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-[#bd34fe] to-[#41d1ff] transition-all duration-300 ${
-                    active === link.title ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}
-                />
+                {active === link.title && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className="absolute -bottom-1 left-0 h-px w-full bg-accent"
+                    transition={{ type: 'tween', duration: 0.3 }}
+                  />
+                )}
               </Link>
             </li>
           ))}
         </ul>
 
-        <div className="flex flex-1 items-center justify-end sm:hidden">
+        {/* Mobile toggle */}
+        <div className="flex items-center sm:hidden">
           <button
-            className="flex h-10 w-10 items-center justify-center rounded-lg transition-colors hover:bg-white/5"
-            onClick={() => {
-              setToggle(!toggle)
-            }}
+            className="flex h-10 w-10 items-center justify-center transition-opacity hover:opacity-70"
+            onClick={() => setToggle((prev) => !prev)}
             aria-label="Toggle menu"
           >
-            <Image className="h-6 w-6 object-contain" src={toggle ? close : menu} alt="menu" />
+            <Image className="h-5 w-5 object-contain" src={toggle ? close : menu} alt="menu" />
           </button>
+        </div>
+      </div>
 
-          <div
-            className={`${
-              !toggle ? 'hidden' : 'flex'
-            } absolute top-20 right-0 z-10 mx-4 my-2 min-w-[160px] rounded-2xl border border-[#bd34fe]/20 bg-tertiary p-6 shadow-[0_0_30px_rgba(189,52,254,0.2)] backdrop-blur-md`}
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {toggle && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="absolute top-full right-0 left-0 z-50 border-b border-neutral-800/50 bg-primary/95 backdrop-blur-lg"
           >
-            <ul className="flex w-full list-none flex-col items-start justify-end gap-4">
-              {navLinks.map((link) => (
-                <li
+            <ul className="flex flex-col px-6 py-4">
+              {navLinks.map((link, i) => (
+                <motion.li
                   key={link.id}
-                  className="w-full"
-                  onClick={() => {
-                    setToggle(!toggle)
-                    setActive(link.title)
-                  }}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
                 >
                   <Link
                     href={`#${link.id}`}
-                    className={`${
-                      active === link.title ? 'bg-[#bd34fe]/10 text-white' : 'text-secondary'
-                    } block rounded-lg px-4 py-2 text-base font-medium transition-all hover:bg-[#bd34fe]/10 hover:text-white`}
+                    onClick={() => {
+                      setToggle(false)
+                      setActive(link.title)
+                    }}
+                    className={`block border-b border-neutral-800/30 py-3.5 text-sm font-medium tracking-wide transition-colors ${
+                      active === link.title ? 'text-accent' : 'text-neutral-400'
+                    }`}
                   >
                     {link.title}
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }

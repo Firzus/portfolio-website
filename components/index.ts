@@ -1,4 +1,3 @@
-import { StarsCanvas } from './canvas'
 import Hero from './Hero'
 import Navbar from './Navbar'
 import About from './About'
@@ -9,4 +8,4 @@ import Works from './Works'
 import Feedbacks from './Feedbacks'
 import Contact from './Contact'
 
-export { Hero, Navbar, About, Tech, Education, Experience, Works, Feedbacks, Contact, StarsCanvas }
+export { Hero, Navbar, About, Tech, Education, Experience, Works, Feedbacks, Contact }

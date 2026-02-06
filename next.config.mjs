@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",
+  output: 'standalone',
   images: {
-    formats: ["image/webp", "image/avif"],
+    formats: ['image/webp', 'image/avif'],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
