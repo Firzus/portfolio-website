@@ -4,7 +4,7 @@
 
 Portfolio website built with **Next.js 16** (App Router), **React 19**, **TypeScript** (strict),
 **Tailwind CSS v4**, **Framer Motion**, and **React Three Fiber** (Three.js). Uses **pnpm** as
-package manager and ESM (`"type": "module"`).
+package manager (`packageManager: pnpm@9.15.0`) and ESM (`"type": "module"`).
 
 ## Build / Lint / Type-Check Commands
 
@@ -16,7 +16,7 @@ pnpm type-check       # TypeScript strict check (tsc --noEmit)
 pnpm format           # Prettier format all files
 ```
 
-**No test runner is configured.** There are no test files, no test dependencies, and no test script.
+**No test runner is configured.** No test files, dependencies, or scripts exist.
 No Cursor rules or Copilot instructions files exist in this repository.
 
 ## Project Structure
@@ -25,10 +25,10 @@ No Cursor rules or Copilot instructions files exist in this repository.
 app/                  # Next.js App Router (layout.tsx, page.tsx, health/route.ts)
 components/           # React components (PascalCase .tsx files)
   canvas/             # Three.js/R3F canvas components (Stars, DynamicStars)
-data/                 # Centralized site content (content.ts)
+data/                 # Centralized site content (content.tsx -- contains JSX)
 hoc/                  # Higher-order components (SectionWrapper)
 types/                # Shared TypeScript interfaces (index.ts) and module declarations (assets.d.ts)
-utils/                # Utility functions (motion.ts, analytics.tsx)
+utils/                # Utility functions (motion.ts)
 styles/               # Global CSS with Tailwind v4 theme config (globals.css)
 public/assets/        # Static images with barrel re-export (index.ts)
 ```
@@ -43,7 +43,7 @@ No `src/` directory -- source files live at the project root level.
 - **No semicolons**
 - **Trailing commas** everywhere (`"all"`)
 - **100-character** print width
-- **Tailwind class sorting** via `prettier-plugin-tailwindcss`
+- **Tailwind class sorting** via `prettier-plugin-tailwindcss` (stylesheet: `./styles/globals.css`)
 
 ### Imports
 
@@ -90,12 +90,20 @@ import type { Group } from 'three'
 - Use **`satisfies`** for type-safe data arrays: `] satisfies NavLink[]`
 - Shared interfaces live in `types/index.ts`; image module declarations in `types/assets.d.ts`
 
+### ESLint Rules (flat config in `eslint.config.mjs`)
+
+- `@typescript-eslint/no-explicit-any`: warn
+- `@typescript-eslint/ban-ts-comment`: warn
+- `@typescript-eslint/no-empty-object-type`: warn
+- `@typescript-eslint/no-unused-vars`: warn -- with `argsIgnorePattern: '^_'`,
+  `varsIgnorePattern: '^_'`, `destructuredArrayIgnorePattern: '^_'`
+
 ### Naming Conventions
 
 | Element              | Convention  | Example                             |
 | -------------------- | ----------- | ----------------------------------- |
 | Component files      | PascalCase  | `Hero.tsx`, `SectionWrapper.tsx`    |
-| Utility/data files   | camelCase   | `motion.ts`, `content.ts`           |
+| Utility/data files   | camelCase   | `motion.ts`, `content.tsx`          |
 | React components     | PascalCase  | `ServiceCard`, `ProjectCard`        |
 | Functions            | camelCase   | `handleChange`, `buildTransition`   |
 | Variables            | camelCase   | `navLinks`, `services`              |
@@ -137,6 +145,7 @@ import type { Group } from 'three'
 
 - **Tailwind CSS v4** -- theme config in `styles/globals.css` under `@theme { }` (no tailwind.config)
 - **PostCSS config** in `postcss.config.cjs` (CommonJS since project is ESM)
+- `tw-animate-css` imported in globals.css for animation utilities
 - Custom theme tokens: `--color-primary`, `--color-accent`, `--color-surface`, `--color-steel`, etc.
 - Custom `@utility` classes: `heroHeadText`, `sectionHeadText`, `sectionSubText`
 - Layout classes: `paddingX`, `paddingY`, `padding` (responsive, plain CSS)
@@ -156,14 +165,16 @@ import type { Group } from 'three'
 | `@react-three/drei` (10) | R3F helpers (OrbitControls, etc)  |
 | `three` (0.165)          | 3D graphics -- **pinned version** |
 | `@emailjs/browser`       | Contact form email sending        |
+| `sharp`                  | Next.js image optimization        |
 
 ## CI/CD & Deployment
 
-- **GitHub Actions** (`.github/workflows/docker-build.yml`) on push to `main`
-- Builds a Docker image and pushes to **GitHub Container Registry** (ghcr.io)
-- Triggers **Dokploy** deployment webhook
+- **GitHub Actions** (`.github/workflows/docker-build.yml`):
+  - **validate** job runs on push to `main` and PRs to `main` (`pnpm lint` + `pnpm type-check`)
+  - **build-and-push** job runs only on push to `main` (Docker build + push to ghcr.io)
+- Triggers **Dokploy** deployment webhook after image push
 - **Dockerfile**: Multi-stage build, Node 20 Alpine, pnpm, standalone Next.js output
-- Production runs as non-root user `nextjs` on port 3000
+- Production runs as non-root user `nextjs` on port 3000 with Docker `HEALTHCHECK`
 
 ## Important Notes
 
