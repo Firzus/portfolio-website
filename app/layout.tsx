@@ -2,7 +2,6 @@ import 'react-vertical-timeline-component/style.min.css'
 import '../styles/globals.css'
 
 import { Syne, Outfit } from 'next/font/google'
-import Analytics from '@/utils/analytics'
 
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
@@ -30,9 +29,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${syne.variable} ${outfit.variable}`}>
-      <head>
-        <Analytics />
-      </head>
+      <head />
       <body className="font-[family-name:var(--font-outfit)]">
         {children}
         <div className="grain-overlay" aria-hidden="true" />
