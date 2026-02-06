@@ -73,7 +73,7 @@ const Contact = () => {
     <>
       <motion.div variants={textVariant()} className="flex flex-col gap-3">
         <p className="sectionSubText">Get in touch</p>
-        <h2 className="font-[family-name:var(--font-syne)] sectionHeadText">
+        <h2 className="font-(family-name:--font-syne) sectionHeadText">
           Contact<span className="text-accent">.</span>
         </h2>
       </motion.div>
@@ -140,7 +140,7 @@ const Contact = () => {
 
           <div className="mt-2">
             <motion.button
-              className="rounded-none bg-accent px-8 py-3.5 font-[family-name:var(--font-syne)] text-sm font-semibold tracking-wide text-primary uppercase transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-40"
+              className="rounded-none bg-accent px-8 py-3.5 font-(family-name:--font-syne) text-sm font-semibold tracking-wide text-primary uppercase transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-40"
               type="submit"
               disabled={loading}
               whileHover={{ scale: 1.02 }}
