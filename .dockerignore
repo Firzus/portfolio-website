@@ -3,6 +3,15 @@ node_modules
 npm-debug.log
 yarn-error.log
 
+# Git
+.git
+.github
+
+# Docs
+*.md
+LICENSE
+LICENSE.*
+
 # Next.js
 .next
 out

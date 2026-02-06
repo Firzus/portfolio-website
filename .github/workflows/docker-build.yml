@@ -3,10 +3,39 @@ name: Build Docker images
 on:
   push:
     branches: ['main']
+  pull_request:
+    branches: ['main']
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run lint
+        run: pnpm lint
+
+      - name: Run type check
+        run: pnpm type-check
+
   build-and-push-dockerfile-image:
     runs-on: ubuntu-latest
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
       contents: read
       packages: write
@@ -36,7 +65,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./Dockerfile
@@ -47,10 +76,10 @@ jobs:
           cache-to: type=gha,mode=max
           platforms: linux/amd64
 
-      - name: Trigger Dockploy deployment
+      - name: Trigger Dokploy deployment
         if: success()
         run: |
-          curl -X POST "${{ secrets.DOCKPLOY_WEBHOOK_URL }}" \
+          curl --fail --show-error --silent -X POST "${{ secrets.DOCKPLOY_WEBHOOK_URL }}" \
             -H "Content-Type: application/json" \
             -d '{
               "image": "ghcr.io/${{ github.repository_owner }}/portfolio-website:latest",
