@@ -4,7 +4,6 @@
 import { useRef, useState } from 'react'
 
 // Module
-import emailjs from '@emailjs/browser'
 import { motion } from 'framer-motion'
 import { fadeIn, textVariant } from '@/utils/motion'
 
@@ -33,40 +32,27 @@ const Contact = () => {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
 
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_SERVICE_ID || '',
-        process.env.NEXT_PUBLIC_TEMPLATE_ID || '',
-        {
-          from_name: form.name,
-          to_name: 'Lilian',
-          from_email: form.email,
-          to_email: 'contact.lprieu@gmail.com',
-          message: form.message,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_API_KEY,
-      )
-      .then(() => {
-        setLoading(false)
-        alert('Thank you. I will get back to you as soon as possible.')
-
-        setForm({
-          name: '',
-          email: '',
-          message: '',
-        })
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
       })
-      .catch((error) => {
-        setLoading(false)
 
-        console.log(error)
+      if (!response.ok) throw new Error('Failed to send')
 
-        alert('Something went wrong.')
-      })
+      alert('Thank you. I will get back to you as soon as possible.')
+      setForm({ name: '', email: '', message: '' })
+    } catch (error) {
+      console.log(error)
+      alert('Something went wrong.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
