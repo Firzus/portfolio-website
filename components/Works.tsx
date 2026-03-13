@@ -30,6 +30,7 @@ const ProjectCard = ({
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             src={image}
             alt={name}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           {/* Overlay gradient */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-60" />
@@ -42,7 +43,7 @@ const ProjectCard = ({
             aria-label={`View source code for ${name}`}
             className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center bg-primary/80 backdrop-blur-sm transition-all duration-300 hover:bg-accent"
           >
-            <Image src={github} alt="" className="h-4 w-4 object-contain invert" />
+            <Image src={github} alt="" className="h-4 w-4 object-contain invert" sizes="16px" />
           </a>
         </div>
 

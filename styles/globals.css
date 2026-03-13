@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
 
 @theme {
   /* ─── Industrial Editorial Palette ─── */
@@ -45,11 +44,11 @@
 /* ─── Base Reset ─── */
 
 * {
-  scroll-behavior: smooth;
   color-scheme: dark;
 }
 
 html {
+  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

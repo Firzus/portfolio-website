@@ -81,7 +81,7 @@ export default function Navbar() {
             onClick={() => setToggle((prev) => !prev)}
             aria-label="Toggle menu"
           >
-            <Image className="h-5 w-5 object-contain" src={toggle ? close : menu} alt="menu" />
+            <Image className="h-5 w-5 object-contain" src={toggle ? close : menu} alt="" sizes="20px" />
           </button>
         </div>
       </div>

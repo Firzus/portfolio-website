@@ -61,32 +61,34 @@ export default function Hero() {
             className="flex items-center gap-3"
           >
             <div className="accent-dot" />
-            <span className="font-[family-name:var(--font-syne)] text-xs font-medium tracking-[0.25em] text-accent uppercase">
+            <span className="font-(family-name:--font-syne) text-xs font-medium tracking-[0.25em] text-accent uppercase">
               Full-Stack & Game Developer
             </span>
           </motion.div>
 
           {/* Heading — oversized, editorial */}
-          <div className="overflow-hidden">
-            <motion.h1
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, ease: LINE_EASE, delay: 0.15 }}
-              className="font-[family-name:var(--font-syne)] heroHeadText"
-            >
-              Lilian
-            </motion.h1>
-          </div>
-          <div className="-mt-6 overflow-hidden lg:-mt-8">
-            <motion.h1
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, ease: LINE_EASE, delay: 0.25 }}
-              className="font-[family-name:var(--font-syne)] heroHeadText"
-            >
-              <span className="accent-text-gradient">Prieu</span>
-            </motion.h1>
-          </div>
+          <h1 className="font-(family-name:--font-syne) heroHeadText">
+            <div className="overflow-hidden">
+              <motion.span
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, ease: LINE_EASE, delay: 0.15 }}
+                className="block"
+              >
+                Lilian
+              </motion.span>
+            </div>
+            <div className="-mt-6 overflow-hidden lg:-mt-8">
+              <motion.span
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, ease: LINE_EASE, delay: 0.25 }}
+                className="block"
+              >
+                <span className="accent-text-gradient">Prieu</span>
+              </motion.span>
+            </div>
+          </h1>
 
           {/* Description */}
           <motion.p
@@ -116,7 +118,7 @@ export default function Hero() {
           >
             <Link href="#work">
               <motion.button
-                className="rounded-none bg-accent px-7 py-3.5 font-[family-name:var(--font-syne)] text-sm font-semibold tracking-wide text-primary uppercase transition-colors hover:bg-accent-hover"
+                className="rounded-none bg-accent px-7 py-3.5 font-(family-name:--font-syne) text-sm font-semibold tracking-wide text-primary uppercase transition-colors hover:bg-accent-hover"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -125,7 +127,7 @@ export default function Hero() {
             </Link>
             <Link href="#contact">
               <motion.button
-                className="rounded-none border border-accent/40 px-7 py-3.5 font-[family-name:var(--font-syne)] text-sm font-semibold tracking-wide text-neutral-200 uppercase transition-colors hover:border-accent hover:text-accent"
+                className="rounded-none border border-accent/40 px-7 py-3.5 font-(family-name:--font-syne) text-sm font-semibold tracking-wide text-neutral-200 uppercase transition-colors hover:border-accent hover:text-accent"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >

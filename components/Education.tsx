@@ -31,6 +31,7 @@ const EducationCard = ({ academic, index }: { academic: Academic; index: number 
             className="h-8 w-8 object-contain"
             src={academic.icon}
             alt={academic.school_name}
+            sizes="32px"
           />
         </div>
 

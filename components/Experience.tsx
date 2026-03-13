@@ -31,6 +31,7 @@ const ExperienceCard = ({ experience, index }: { experience: ExperiencePoint; in
             className="h-9 w-9 object-contain"
             src={experience.icon}
             alt={experience.company_name}
+            sizes="36px"
           />
         </div>
 
