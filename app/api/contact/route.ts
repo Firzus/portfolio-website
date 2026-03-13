@@ -1,6 +1,9 @@
 import { Resend } from 'resend'
 import { z } from 'zod'
 
+// Content / Data / Components
+import { env } from '@/env'
+
 const contactSchema = z.object({
   name: z.string().min(1),
   email: z.string().email(),
@@ -21,7 +24,7 @@ export async function POST(request: Request) {
 
   const { error } = await resend.emails.send({
     from: 'Lilian Music <contact@portfolio.lprieu.dev>',
-    to: ['contact.lprieu@gmail.com'],
+    to: [env.CONTACT_EMAIL],
     subject: `New message from ${name}`,
     replyTo: email,
     html: `
