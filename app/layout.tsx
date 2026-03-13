@@ -2,6 +2,7 @@ import 'react-vertical-timeline-component/style.min.css'
 import '../styles/globals.css'
 
 import { Syne, Outfit } from 'next/font/google'
+import { Analytics } from "@vercel/analytics/next"
 
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head />
       <body className="font-(family-name:--font-outfit)">
         {children}
+        <Analytics />
         <div className="grain-overlay" aria-hidden="true" />
       </body>
     </html>
