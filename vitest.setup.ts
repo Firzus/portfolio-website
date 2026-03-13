@@ -1,5 +1,8 @@
 import '@testing-library/jest-dom/vitest'
 
+// Set test env vars for Zod validation (env.ts)
+process.env.NEXT_PUBLIC_SITE_URL = 'https://test.example.com'
+
 // Mock IntersectionObserver (used by framer-motion whileInView)
 class MockIntersectionObserver {
   readonly root: Element | null = null

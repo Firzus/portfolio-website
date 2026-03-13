@@ -23,6 +23,7 @@ const TechIcon = ({ technology, index }: { technology: Technology; index: number
           <Image
             src={technology.icon}
             alt={technology.name}
+            sizes="56px"
             className="relative z-10 h-12 w-12 object-contain transition-transform duration-500 group-hover:scale-110 sm:h-14 sm:w-14"
           />
         </div>

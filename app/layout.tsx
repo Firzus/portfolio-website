@@ -1,8 +1,8 @@
-import 'react-vertical-timeline-component/style.min.css'
 import '../styles/globals.css'
 
 import { Syne, Outfit } from 'next/font/google'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/next'
+import { env } from '@/env'
 
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
@@ -22,9 +22,28 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: 'Prieu Lilian | Full-Stack & Game Developer Portfolio',
+  metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
+  title: 'Lilian Prieu | Full-Stack & Game Developer',
   description:
-    'Dive into the works of Lilian, a French comp-sci student specializing in web and video game development. My portfolio highlights versatility in Unity, Unreal Engine, React, and Figma, with a track record of precision and leadership on diverse projects.',
+    'Portfolio of Lilian Prieu — full-stack & game developer. Web projects with React and Next.js, game dev with Unity and Unreal Engine.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Lilian Prieu | Full-Stack & Game Developer',
+    description:
+      'Portfolio of Lilian Prieu — full-stack & game developer. Web projects with React and Next.js, game dev with Unity and Unreal Engine.',
+    url: '/',
+    siteName: 'Lilian Prieu Portfolio',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Lilian Prieu | Full-Stack & Game Developer',
+    description:
+      'Portfolio of Lilian Prieu — full-stack & game developer. Web projects with React and Next.js, game dev with Unity and Unreal Engine.',
+  },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

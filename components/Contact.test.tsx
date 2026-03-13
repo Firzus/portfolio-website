@@ -34,14 +34,6 @@ vi.mock('framer-motion', () => ({
   },
 }))
 
-// Mock emailjs
-const mockSend = vi.fn()
-vi.mock('@emailjs/browser', () => ({
-  default: {
-    send: (...args: unknown[]) => mockSend(...args),
-  },
-}))
-
 // Mock SectionWrapper to just return the component directly
 vi.mock('@/hoc', () => ({
   SectionWrapper: (Component: React.ComponentType, _id: string) => Component,
@@ -94,8 +86,10 @@ describe('Contact', () => {
     expect(messageInput).toHaveValue('Hello!')
   })
 
-  it('calls emailjs.send on form submission', async () => {
-    mockSend.mockResolvedValueOnce({ status: 200, text: 'OK' })
+  it('calls fetch on form submission', async () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+      new Response(JSON.stringify({ success: true }), { status: 200 }),
+    )
     vi.spyOn(window, 'alert').mockImplementation(() => {})
 
     render(<Contact />)
@@ -111,22 +105,25 @@ describe('Contact', () => {
     const form = nameInput.closest('form')!
     fireEvent.submit(form)
 
-    expect(mockSend).toHaveBeenCalledWith(
-      '',
-      '',
-      {
-        from_name: 'Jane',
-        to_name: 'Lilian',
-        from_email: 'jane@test.com',
-        to_email: 'contact.lprieu@gmail.com',
-        message: 'Test message',
-      },
-      undefined,
-    )
+    await vi.waitFor(() => {
+      expect(fetchSpy).toHaveBeenCalledWith('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Jane',
+          email: 'jane@test.com',
+          message: 'Test message',
+        }),
+      })
+    })
+
+    fetchSpy.mockRestore()
   })
 
   it('shows success alert and resets form after successful send', async () => {
-    mockSend.mockResolvedValueOnce({ status: 200, text: 'OK' })
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+      new Response(JSON.stringify({ success: true }), { status: 200 }),
+    )
     const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {})
 
     render(<Contact />)
@@ -144,19 +141,21 @@ describe('Contact', () => {
     const form = nameInput.closest('form')!
     fireEvent.submit(form)
 
-    // Wait for promise resolution
     await vi.waitFor(() => {
       expect(alertSpy).toHaveBeenCalledWith(
         'Thank you. I will get back to you as soon as possible.',
       )
     })
 
-    // Form should be reset
     expect(nameInput).toHaveValue('')
+
+    fetchSpy.mockRestore()
   })
 
   it('shows error alert on failed send', async () => {
-    mockSend.mockRejectedValueOnce(new Error('Network error'))
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+      new Response(JSON.stringify({ error: 'Failed' }), { status: 500 }),
+    )
     const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {})
     vi.spyOn(console, 'log').mockImplementation(() => {})
 
@@ -178,10 +177,12 @@ describe('Contact', () => {
     await vi.waitFor(() => {
       expect(alertSpy).toHaveBeenCalledWith('Something went wrong.')
     })
+
+    fetchSpy.mockRestore()
   })
 
   it('disables submit button while loading', () => {
-    mockSend.mockReturnValueOnce(new Promise(() => {})) // Never resolves
+    vi.spyOn(globalThis, 'fetch').mockReturnValueOnce(new Promise(() => {}))
 
     render(<Contact />)
 
