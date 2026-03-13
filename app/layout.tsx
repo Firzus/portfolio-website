@@ -30,10 +30,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${syne.variable} ${outfit.variable}`}>
-      <head />
+      <head>
+        <Analytics />
+      </head>
       <body className="font-(family-name:--font-outfit)">
         {children}
-        <Analytics />
         <div className="grain-overlay" aria-hidden="true" />
       </body>
     </html>
