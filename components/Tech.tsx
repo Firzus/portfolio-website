@@ -1,39 +1,34 @@
 'use client'
 
 import Image from 'next/image'
-import type { StaticImageData } from 'next/image'
 import { motion } from 'framer-motion'
+
+import type { Technology } from '@/types'
 
 import { SectionWrapper } from '@/hoc'
 import { technologies } from '@/data/content'
-
-interface Technology {
-  name: string
-  icon: StaticImageData
-}
+import { fadeIn, textVariant } from '@/utils/motion'
 
 const TechIcon = ({ technology, index }: { technology: Technology; index: number }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative"
-    >
-      <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-2xl border border-transparent bg-tertiary transition-all duration-300 hover:border-[#bd34fe]/50 hover:shadow-[0_0_25px_rgba(189,52,254,0.3)] sm:h-28 sm:w-28">
-        {/* Gradient glow on hover */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#bd34fe]/10 to-[#41d1ff]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+    <motion.div variants={fadeIn('up', 'tween', index * 0.08, 0.5)} className="group relative">
+      <div className="flex flex-col items-center gap-3">
+        <div className="flex h-20 w-20 items-center justify-center border border-neutral-800/50 bg-surface transition-all duration-500 hover:border-accent/30 hover:bg-surface-raised sm:h-24 sm:w-24">
+          {/* Corner marks */}
+          <div className="pointer-events-none absolute top-0 left-0 h-2 w-2 border-t border-l border-transparent transition-colors duration-500 group-hover:border-accent/40" />
+          <div className="pointer-events-none absolute top-0 right-0 h-2 w-2 border-t border-r border-transparent transition-colors duration-500 group-hover:border-accent/40" />
+          <div className="pointer-events-none absolute bottom-0 left-0 h-2 w-2 border-b border-l border-transparent transition-colors duration-500 group-hover:border-accent/40" />
+          <div className="pointer-events-none absolute right-0 bottom-0 h-2 w-2 border-r border-b border-transparent transition-colors duration-500 group-hover:border-accent/40" />
 
-        <Image
-          src={technology.icon}
-          alt={technology.name}
-          className="relative z-10 h-16 w-16 object-contain transition-transform duration-300 group-hover:scale-110"
-        />
-      </div>
-
-      {/* Tooltip */}
-      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-        <span className="text-sm font-medium text-secondary">{technology.name}</span>
+          <Image
+            src={technology.icon}
+            alt={technology.name}
+            className="relative z-10 h-12 w-12 object-contain transition-transform duration-500 group-hover:scale-110 sm:h-14 sm:w-14"
+          />
+        </div>
+        <span className="text-xs font-medium tracking-wider text-neutral-500 transition-colors duration-300 group-hover:text-accent">
+          {technology.name}
+        </span>
       </div>
     </motion.div>
   )
@@ -41,23 +36,24 @@ const TechIcon = ({ technology, index }: { technology: Technology; index: number
 
 const Tech = () => {
   return (
-    <div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="mb-12 text-center"
-      >
-        <h2 className="sectionHeadText">Technologies.</h2>
-        <p className="mt-2 sectionSubText">Tools I work with</p>
+    <>
+      <motion.div variants={textVariant()} className="flex flex-col gap-3">
+        <p className="sectionSubText">Tools I work with</p>
+        <h2 className="font-[family-name:var(--font-syne)] sectionHeadText">
+          Technologies<span className="text-accent">.</span>
+        </h2>
       </motion.div>
 
-      <div className="flex flex-row flex-wrap justify-center gap-8 sm:gap-10">
-        {(technologies as Technology[]).map((technology, index) => (
+      <motion.div variants={fadeIn('none', 'tween', 0.1, 0.8)} className="mt-2">
+        <div className="accent-rule-line mb-4 max-w-xs" />
+      </motion.div>
+
+      <div className="mt-12 flex flex-wrap justify-start gap-6 sm:gap-8">
+        {technologies.map((technology, index) => (
           <TechIcon key={technology.name} technology={technology} index={index} />
         ))}
       </div>
-    </div>
+    </>
   )
 }
 

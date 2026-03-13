@@ -2,92 +2,89 @@
 
 // Base
 import Image from 'next/image'
-import type { StaticImageData } from 'next/image'
 
 // Lib
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
 import { motion } from 'framer-motion'
+
+// Types
+import type { ExperiencePoint } from '@/types'
 
 // Components
 import { SectionWrapper } from '@/hoc'
 import { experiences } from '@/data/content'
-import { textVariant } from '@/utils/motion'
+import { textVariant, fadeIn } from '@/utils/motion'
 
-interface ExperiencePoint {
-  title: string
-  company_name: string
-  icon: StaticImageData
-  iconBg: string
-  date: string
-  points: string[]
-}
-
-const ExperienceCard = ({ experience }: { experience: ExperiencePoint }) => {
+const ExperienceCard = ({ experience, index }: { experience: ExperiencePoint; index: number }) => {
   return (
-    <VerticalTimelineElement
-      visible={true}
-      contentStyle={{
-        background: '#1a1a1a',
-        color: '#fff',
-        border: '1px solid rgba(189, 52, 254, 0.2)',
-        boxShadow: '0 4px 24px rgba(0, 0, 0, 0.4)',
-      }}
-      contentArrowStyle={{ borderRight: '7px solid #1a1a1a' }}
-      date={experience.date}
-      dateClassName="text-secondary"
-      iconStyle={{
-        background: experience.iconBg,
-        border: '2px solid #bd34fe',
-        boxShadow: '0 0 20px rgba(189, 52, 254, 0.3)',
-      }}
-      icon={
-        <div className="flex h-full w-full items-center justify-center">
+    <motion.div variants={fadeIn('up', 'tween', 0.15 * index, 0.6)} className="group relative">
+      <div className="flex flex-col gap-6 border-l border-neutral-800 py-8 pl-8 transition-all duration-500 hover:border-accent/50 sm:flex-row sm:gap-8">
+        {/* Timeline dot */}
+        <div className="absolute top-10 left-0 flex -translate-x-1/2 items-center justify-center">
+          <div className="flex h-8 w-8 items-center justify-center bg-surface transition-colors duration-500 group-hover:bg-surface-raised">
+            <div className="h-2 w-2 bg-neutral-600 transition-colors duration-500 group-hover:bg-accent" />
+          </div>
+        </div>
+
+        {/* Icon */}
+        <div className="flex h-16 w-16 shrink-0 items-center justify-center border border-neutral-800/50 bg-surface">
           <Image
-            className="h-[60%] w-[60%] object-contain"
+            className="h-9 w-9 object-contain"
             src={experience.icon}
             alt={experience.company_name}
           />
         </div>
-      }
-    >
-      <div>
-        <h3 className="text-[24px] font-bold text-white">{experience.title}</h3>
-        <p className="text-[16px] font-semibold text-secondary" style={{ margin: 0 }}>
-          {experience.company_name}
-        </p>
-      </div>
 
-      <ul className="mt-5 ml-5 list-disc space-y-2">
-        {experience.points.map((point, index) => (
-          <li
-            key={`experience-point-${index}`}
-            className="text-white-100 pl-1 text-[14px] tracking-wider"
-          >
-            {point}
-          </li>
-        ))}
-      </ul>
-    </VerticalTimelineElement>
+        {/* Content */}
+        <div className="flex flex-1 flex-col gap-3">
+          <div className="flex flex-col gap-1">
+            <span className="text-xs font-medium tracking-wider text-accent uppercase">
+              {experience.date}
+            </span>
+            <h3 className="font-[family-name:var(--font-syne)] text-xl font-bold text-neutral-100">
+              {experience.title}
+            </h3>
+            <p className="text-sm font-medium text-neutral-500">{experience.company_name}</p>
+          </div>
+
+          <ul className="mt-2 flex flex-col gap-2">
+            {experience.points.map((point, i) => (
+              <li
+                key={`experience-point-${i}`}
+                className="flex items-start gap-3 text-sm leading-relaxed text-neutral-400"
+              >
+                <span className="mt-2 h-1 w-1 shrink-0 bg-accent/60" />
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </motion.div>
   )
 }
 
 const Experience = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <motion.div variants={textVariant()} className="flex flex-col gap-3">
         <p className="sectionSubText">What I have done so far</p>
-        <h2 className="sectionHeadText">Work Experience.</h2>
+        <h2 className="font-[family-name:var(--font-syne)] sectionHeadText">
+          Experience<span className="text-accent">.</span>
+        </h2>
       </motion.div>
 
-      <div className="mt-20 flex flex-col">
-        <VerticalTimeline lineColor="#bd34fe">
-          {experiences.map((experience) => (
-            <ExperienceCard
-              key={`${experience.title}-${experience.company_name}-${experience.date}`}
-              experience={experience}
-            />
-          ))}
-        </VerticalTimeline>
+      <motion.div variants={fadeIn('none', 'tween', 0.1, 0.8)} className="mt-2">
+        <div className="accent-rule-line mb-4 max-w-xs" />
+      </motion.div>
+
+      <div className="mt-12 ml-4">
+        {experiences.map((experience, index) => (
+          <ExperienceCard
+            key={`${experience.title}-${experience.company_name}-${experience.date}`}
+            experience={experience}
+            index={index}
+          />
+        ))}
       </div>
     </>
   )
